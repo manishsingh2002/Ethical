@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EthicalHack Academy — Complete Cybersecurity Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0a0e17;
+  --bg2:       #0f1520;
+  --bg3:       #151d2e;
+  --border:    #1e2d45;
+  --border2:   #243347;
+  --text:      #c8d8f0;
+  --text2:     #7a9bbf;
+  --text3:     #3d5a7a;
+  --accent:    #00d4ff;
+  --accent2:   #0099cc;
+  --green:     #00ff88;
+  --green2:    #00cc6a;
+  --red:       #ff4455;
+  --orange:    #ff8c00;
+  --yellow:    #ffd700;
+  --purple:    #a855f7;
+  --mono:      'JetBrains Mono', monospace;
+  --sans:      'Syne', sans-serif;
+  --body:      'Inter', sans-serif;
+  --radius:    10px;
+  --glow:      0 0 20px rgba(0,212,255,0.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── SIDEBAR ── */
+.sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;z-index:100;display:flex;flex-direction:column}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.logo{font-family:var(--sans);font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.5px}
+.logo span{color:var(--accent)}
+.logo-sub{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:4px;letter-spacing:0.1em}
+.legal-badge{margin-top:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:600;color:var(--green);font-family:var(--mono);letter-spacing:0.05em}
+.legal-badge::before{content:'✓';font-size:9px}
+.nav-section{padding:16px 12px 8px;font-family:var(--mono);font-size:9px;font-weight:600;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:pointer;transition:all .15s;text-decoration:none;color:var(--text2);font-size:13px;font-family:var(--body);margin:1px 8px}
+.nav-item:hover{background:var(--bg3);color:var(--text)}
+.nav-item.active{background:rgba(0,212,255,0.08);color:var(--accent);border-left:2px solid var(--accent);padding-left:10px}
+.nav-item .nav-num{font-family:var(--mono);font-size:10px;color:var(--text3);width:20px;text-align:right;flex-shrink:0}
+.nav-item.active .nav-num{color:var(--accent)}
+.nav-item .nav-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:all .15s}
+.nav-item.active .nav-dot,.nav-item:hover .nav-dot{background:var(--accent)}
+.sidebar-footer{padding:16px 20px;border-top:1px solid var(--border);flex-shrink:0;margin-top:auto}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:8px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:2px;width:33%;transition:width .5s}
+.progress-label{font-family:var(--mono);font-size:10px;color:var(--text3)}
+
+/* ── MAIN ── */
+.main{margin-left:280px;min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--bg2) 0%,var(--bg) 100%);border-bottom:1px solid var(--border);padding:60px 60px 50px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30%;left:20%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,255,136,0.04) 0%,transparent 70%);pointer-events:none}
+.hero-label{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.hero-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--sans);font-size:52px;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+.hero h1 span{color:var(--accent)}
+.hero-desc{font-size:16px;color:var(--text2);max-width:600px;line-height:1.7;margin-bottom:32px}
+.hero-stats{display:flex;gap:40px;margin-bottom:36px}
+.stat{display:flex;flex-direction:column;gap:3px}
+.stat-num{font-family:var(--sans);font-size:28px;font-weight:800;color:#fff}
+.stat-num span{color:var(--accent);font-size:20px}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:5px 12px;border-radius:20px;font-family:var(--mono);font-size:11px;font-weight:500;border:1px solid var(--border2);color:var(--text2);background:var(--bg3);transition:all .15s;cursor:default}
+.tag:hover{border-color:var(--accent);color:var(--accent)}
+.tag.green{border-color:rgba(0,255,136,0.3);color:var(--green);background:rgba(0,255,136,0.05)}
+
+/* ── CONTENT AREA ── */
+.content{padding:0 60px 80px}
+
+/* ── CHAPTER SECTION ── */
+.chapter{display:none;animation:fadeIn .3s ease}
+.chapter.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.chapter-header{padding:50px 0 36px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.ch-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ch-num{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.1em}
+.ch-phase{padding:3px 10px;border-radius:20px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.08em}
+.chapter-header h2{font-family:var(--sans);font-size:38px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.chapter-header h2 .accent{color:var(--accent)}
+.chapter-intro{font-size:16px;color:var(--text2);max-width:700px;line-height:1.75}
+
+/* ── 5W BLOCK ── */
+.five-w{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:36px 0}
+.w-card{border-radius:var(--radius);padding:16px 14px;border:1px solid var(--border);background:var(--bg2);position:relative;overflow:hidden}
+.w-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.w-card:nth-child(1)::before{background:var(--accent)}
+.w-card:nth-child(2)::before{background:var(--green)}
+.w-card:nth-child(3)::before{background:var(--orange)}
+.w-card:nth-child(4)::before{background:var(--yellow)}
+.w-card:nth-child(5)::before{background:var(--purple)}
+.w-word{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.12em;margin-bottom:8px}
+.w-card:nth-child(1) .w-word{color:var(--accent)}
+.w-card:nth-child(2) .w-word{color:var(--green)}
+.w-card:nth-child(3) .w-word{color:var(--orange)}
+.w-card:nth-child(4) .w-word{color:var(--yellow)}
+.w-card:nth-child(5) .w-word{color:var(--purple)}
+.w-text{font-size:12px;color:var(--text2);line-height:1.6}
+.w-text strong{color:var(--text);font-weight:500}
+
+/* ── SECTION HEADERS ── */
+.section-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);margin:40px 0 16px;display:flex;align-items:center;gap:12px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── TEXT BLOCKS ── */
+.body-text{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:16px}
+.body-text strong{color:var(--text);font-weight:600}
+.body-text code{font-family:var(--mono);font-size:12px;background:var(--bg3);padding:2px 7px;border-radius:4px;color:var(--accent);border:1px solid var(--border)}
+
+/* ── CODE BLOCKS ── */
+.code-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:16px 0}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg3)}
+.code-lang{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.code-dots{display:flex;gap:5px}
+.code-dot{width:10px;height:10px;border-radius:50%}
+.code-dot:nth-child(1){background:#ff5f57}
+.code-dot:nth-child(2){background:#ffbd2e}
+.code-dot:nth-child(3){background:#28c840}
+.code-body{padding:20px;font-family:var(--mono);font-size:12px;color:var(--text);line-height:2.0;overflow-x:auto;white-space:pre}
+.code-body .cm{color:var(--text3)}
+.code-body .ck{color:var(--accent)}
+.code-body .cv{color:var(--green)}
+.code-body .cs{color:var(--orange)}
+.code-body .ch{color:var(--yellow)}
+
+/* ── HACK / DEFENSE BOXES ── */
+.hack-box{border-radius:var(--radius);padding:18px 20px;border:1px solid rgba(255,68,85,0.25);background:rgba(255,68,85,0.05);margin:16px 0}
+.hack-box-title{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.hack-box-body{font-size:13px;color:#e8b4b8;line-height:1.75}
+.hack-box-body strong{color:#ffaaaa;font-weight:600}
+.hack-box-body code{font-family:var(--mono);font-size:11px;background:rgba(255,68,85,0.15);padding:2px 6px;border-radius:4px;color:var(--red)}
+.defense-box{border-radius:var(--radius);padding:18px 20px;border:1px solid rgba(0,255,136,0.2);background:rgba(0,255,136,0.04);margin:16px 0}
+.defense-box-title{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.defense-box-body{font-size:13px;color:#a8e6c8;line-height:1.75}
+.defense-box-body strong{color:#aaffcc;font-weight:600}
+.defense-box-body code{font-family:var(--mono);font-size:11px;background:rgba(0,255,136,0.1);padding:2px 6px;border-radius:4px;color:var(--green)}
+.info-box{border-radius:var(--radius);padding:18px 20px;border:1px solid rgba(0,212,255,0.2);background:rgba(0,212,255,0.04);margin:16px 0}
+.info-box-body{font-size:13px;color:#a8d4e6;line-height:1.75}
+.info-box-body strong{color:var(--accent);font-weight:600}
+.info-box-body code{font-family:var(--mono);font-size:11px;background:rgba(0,212,255,0.1);padding:2px 6px;border-radius:4px;color:var(--accent)}
+
+/* ── CARDS GRID ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:20px 0}
+.card{border-radius:var(--radius);padding:20px;border:1px solid var(--border);background:var(--bg2);transition:all .2s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--glow)}
+.card-accent{position:absolute;top:0;left:0;right:0;height:2px}
+.card-icon{font-size:24px;margin-bottom:12px}
+.card-title{font-family:var(--sans);font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+.card-body{font-size:12px;color:var(--text2);line-height:1.65}
+.card-tag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 8px;border-radius:20px;margin-top:10px;letter-spacing:0.08em}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--bg3)}
+th{padding:12px 16px;text-align:left;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg3);color:var(--text)}
+td code{font-family:var(--mono);font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--accent)}
+td strong{color:var(--text);font-weight:600}
+
+/* ── ROADMAP ── */
+.roadmap{display:flex;flex-direction:column;gap:0;position:relative;margin:24px 0}
+.roadmap::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--accent),var(--green),var(--purple));opacity:0.3}
+.rm-item{display:flex;gap:20px;align-items:flex-start;padding:20px 0;position:relative}
+.rm-dot{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:18px;font-weight:700;flex-shrink:0;position:relative;z-index:1}
+.rm-content{flex:1;padding-top:6px}
+.rm-week{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;margin-bottom:4px}
+.rm-title{font-family:var(--sans);font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.rm-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:8px}
+.rm-tags{display:flex;flex-wrap:wrap;gap:5px}
+.rm-tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;background:var(--bg3);border:1px solid var(--border);color:var(--text3)}
+
+/* ── OSI LAYERS ── */
+.osi-stack{display:flex;flex-direction:column;gap:4px;margin:20px 0}
+.osi-layer{border-radius:8px;padding:14px 20px;display:grid;grid-template-columns:40px 1fr 1fr 1fr;gap:16px;align-items:center;cursor:pointer;transition:all .2s;border:1px solid transparent}
+.osi-layer:hover{border-color:var(--border2);transform:translateX(4px)}
+.osi-layer.active-layer{border-color:var(--accent) !important;box-shadow:var(--glow)}
+.osi-num{font-family:var(--mono);font-size:18px;font-weight:700;color:rgba(255,255,255,0.4)}
+.osi-name{font-family:var(--sans);font-size:14px;font-weight:700;color:#fff}
+.osi-desc{font-size:12px;color:var(--text2)}
+.osi-hack{font-family:var(--mono);font-size:11px;color:var(--red);opacity:.8}
+.osi-detail{border-radius:var(--radius);padding:20px;border:1px solid var(--border);background:var(--bg2);margin-top:8px;display:none}
+.osi-detail.show{display:block;animation:fadeIn .2s ease}
+
+/* ── QUIZ ── */
+.quiz-block{border-radius:var(--radius);border:1px solid var(--border);background:var(--bg2);overflow:hidden;margin:20px 0}
+.quiz-header{padding:16px 20px;border-bottom:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:10px}
+.quiz-title{font-family:var(--sans);font-size:15px;font-weight:700;color:#fff}
+.quiz-count{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.quiz-questions{padding:20px}
+.quiz-q{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.quiz-q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.quiz-q-num{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;letter-spacing:0.08em}
+.quiz-q-text{font-size:14px;color:var(--text);font-weight:500;margin-bottom:10px;line-height:1.6}
+.quiz-reveal{background:none;border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:6px;font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .15s}
+.quiz-reveal:hover{background:var(--bg3);border-color:var(--accent);color:var(--accent)}
+.quiz-answer{display:none;margin-top:10px;padding:12px 14px;border-radius:8px;background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);font-size:13px;color:#a8e6c8;line-height:1.7}
+.quiz-answer.show{display:block;animation:fadeIn .2s ease}
+.quiz-answer strong{color:var(--green);font-weight:600}
+
+/* ── CERT PATH ── */
+.cert-path{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:20px 0}
+.cert-item{display:flex;align-items:center}
+.cert-badge{padding:10px 18px;border-radius:8px;font-family:var(--mono);font-size:12px;font-weight:600;border:1px solid;text-align:center}
+.cert-arrow{font-size:18px;color:var(--text3);padding:0 8px}
+
+/* ── RESOURCE CARDS ── */
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:16px 0}
+.resource-card{border-radius:var(--radius);padding:16px;border:1px solid var(--border);background:var(--bg2);transition:all .2s;text-decoration:none;display:block}
+.resource-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.resource-name{font-family:var(--sans);font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.resource-desc{font-size:12px;color:var(--text2);margin-bottom:8px;line-height:1.5}
+.resource-type{font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 8px;border-radius:20px;letter-spacing:0.08em}
+
+/* ── COMMAND TABLE ── */
+.cmd-table{display:flex;flex-direction:column;gap:3px;margin:16px 0}
+.cmd-row{display:grid;grid-template-columns:130px 1fr auto;gap:12px;align-items:start;padding:10px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);transition:all .15s}
+.cmd-row:hover{border-color:var(--border2);background:var(--bg3)}
+.cmd-name{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent)}
+.cmd-desc{font-size:12px;color:var(--text2);line-height:1.5}
+.cmd-risk{font-family:var(--mono);font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:0.06em;white-space:nowrap;align-self:center}
+
+/* ── MOBILE ── */
+.hamburger{display:none;position:fixed;top:16px;left:16px;z-index:200;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px;cursor:pointer;flex-direction:column;gap:4px}
+.hamburger span{display:block;width:20px;height:2px;background:var(--text2);border-radius:1px}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:99}
+
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%);transition:transform .3s}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .hero{padding:60px 24px 40px}
+  .hero h1{font-size:36px}
+  .hero-stats{gap:24px}
+  .stat-num{font-size:22px}
+  .content{padding:0 24px 60px}
+  .chapter-header{padding:36px 0 28px}
+  .chapter-header h2{font-size:28px}
+  .five-w{grid-template-columns:1fr 1fr}
+  .hamburger{display:flex}
+  .sidebar-overlay.show{display:block}
+  .osi-layer{grid-template-columns:32px 1fr}
+  .osi-desc,.osi-hack{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE -->
+<div class="hamburger" id="hamburger" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</div>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">Ethical<span>Hack</span> Academy</div>
+    <div class="logo-sub">// Complete Cybersecurity Course</div>
+    <div class="legal-badge">100% Legal &amp; Ethical</div>
+  </div>
+
+  <div class="nav-section">Phase 1 — Foundations</div>
+  <a class="nav-item active" onclick="showChapter('ch0',this)">
+    <span class="nav-num">00</span><div class="nav-dot"></div>Course Overview &amp; Roadmap
+  </a>
+  <a class="nav-item" onclick="showChapter('ch1',this)">
+    <span class="nav-num">01</span><div class="nav-dot"></div>Networking Fundamentals
+  </a>
+  <a class="nav-item" onclick="showChapter('ch2',this)">
+    <span class="nav-num">02</span><div class="nav-dot"></div>Linux for Hackers
+  </a>
+  <a class="nav-item" onclick="showChapter('ch3',this)">
+    <span class="nav-num">03</span><div class="nav-dot"></div>Linux Permissions &amp; PrivEsc
+  </a>
+  <a class="nav-item" onclick="showChapter('ch4',this)">
+    <span class="nav-num">04</span><div class="nav-dot"></div>50 Essential Commands
+  </a>
+  <a class="nav-item" onclick="showChapter('ch5',this)">
+    <span class="nav-num">05</span><div class="nav-dot"></div>Bash Scripting for Hackers
+  </a>
+
+  <div class="nav-section">Phase 2 — Web &amp; Network</div>
+  <a class="nav-item" onclick="showChapter('ch6',this)">
+    <span class="nav-num">06</span><div class="nav-dot"></div>Python for Security
+  </a>
+  <a class="nav-item" onclick="showChapter('ch7',this)">
+    <span class="nav-num">07</span><div class="nav-dot"></div>Web Technologies &amp; HTTP
+  </a>
+  <a class="nav-item" onclick="showChapter('ch8',this)">
+    <span class="nav-num">08</span><div class="nav-dot"></div>OWASP Top 10
+  </a>
+  <a class="nav-item" onclick="showChapter('ch9',this)">
+    <span class="nav-num">09</span><div class="nav-dot"></div>Burp Suite Mastery
+  </a>
+  <a class="nav-item" onclick="showChapter('ch10',this)">
+    <span class="nav-num">10</span><div class="nav-dot"></div>Wi-Fi &amp; Network Security
+  </a>
+
+  <div class="nav-section">Phase 3 — Advanced</div>
+  <a class="nav-item" onclick="showChapter('ch11',this)">
+    <span class="nav-num">11</span><div class="nav-dot"></div>Ethical Hacking Methodology
+  </a>
+  <a class="nav-item" onclick="showChapter('ch12',this)">
+    <span class="nav-num">12</span><div class="nav-dot"></div>Cryptography Fundamentals
+  </a>
+  <a class="nav-item" onclick="showChapter('ch13',this)">
+    <span class="nav-num">13</span><div class="nav-dot"></div>Digital Forensics
+  </a>
+  <a class="nav-item" onclick="showChapter('ch14',this)">
+    <span class="nav-num">14</span><div class="nav-dot"></div>CTF Strategy &amp; Practice
+  </a>
+  <a class="nav-item" onclick="showChapter('ch15',this)">
+    <span class="nav-num">15</span><div class="nav-dot"></div>Bug Bounty Methodology
+  </a>
+  <a class="nav-item" onclick="showChapter('ch16',this)">
+    <span class="nav-num">16</span><div class="nav-dot"></div>Career &amp; Certifications
+  </a>
+
+  <div class="sidebar-footer">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Chapter 0 of 16 • 0% complete</div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Ethical Hacking Academy</div>
+    <h1>Learn to <span>Hack</span><br>Legally &amp; Ethically</h1>
+    <p class="hero-desc">A complete, structured cybersecurity curriculum — from absolute beginner to advanced ethical hacker. Every topic answers Why, How, Where, When, and To Whom before a single command is typed.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">16<span>+</span></div><div class="stat-label">Chapters</div></div>
+      <div class="stat"><div class="stat-num">6<span>mo</span></div><div class="stat-label">Roadmap</div></div>
+      <div class="stat"><div class="stat-num">50<span>+</span></div><div class="stat-label">Lab Exercises</div></div>
+      <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">Legal &amp; Ethical</div></div>
+    </div>
+    <div class="hero-tags">
+      <div class="tag green">✓ Legal Practices Only</div>
+      <div class="tag green">✓ Lab Environments</div>
+      <div class="tag">TryHackMe</div>
+      <div class="tag">Hack The Box</div>
+      <div class="tag">PortSwigger</div>
+      <div class="tag">OverTheWire</div>
+      <div class="tag">Kali Linux</div>
+      <div class="tag">CTF Ready</div>
+    </div>
+  </div>
+
+  <div class="content" id="contentArea"></div>
+
+</main>
+
+<script src="chapters.js"></script>
+<script>
+let currentChapter = 'ch0';
+let completedChapters = new Set();
+
+function showChapter(id, el) {
+  document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const ch = document.getElementById(id);
+  if (ch) ch.classList.add('active');
+  if (el) el.classList.add('active');
+  currentChapter = id;
+  completedChapters.add(id);
+  updateProgress();
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (window.innerWidth <= 900) toggleSidebar();
+}
+
+function updateProgress() {
+  const total = 17;
+  const done = completedChapters.size;
+  const pct = Math.round((done/total)*100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `Chapter ${done-1} of 16 • ${pct}% complete`;
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function toggleOSI(el) {
+  const detail = el.nextElementSibling;
+  const wasActive = el.classList.contains('active-layer');
+  document.querySelectorAll('.osi-layer').forEach(l => l.classList.remove('active-layer'));
+  document.querySelectorAll('.osi-detail').forEach(d => d.classList.remove('show'));
+  if (!wasActive) {
+    el.classList.add('active-layer');
+    detail.classList.add('show');
+  }
+}
+
+function toggleQuiz(btn) {
+  const answer = btn.nextElementSibling;
+  answer.classList.toggle('show');
+  btn.textContent = answer.classList.contains('show') ? 'Hide answer ↑' : 'Show answer ↓';
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  showChapter('ch0', document.querySelector('.nav-item'));
+});
+</script>
+</body>
+</html>
